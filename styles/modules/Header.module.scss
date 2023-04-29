@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+
+  &__icons {
+    display: block;
+    svg {
+      padding-right: 30px;
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    padding-right: 30px;
+    display: inline-block;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+      display: block;
+      padding: 12px 0px;
+      font-size: 1rem;
+    }
+  }
+}
