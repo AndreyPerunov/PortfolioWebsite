@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react"
-import styles from "../styles/modules/Wrapper.module.scss"
+import styles from "./(styles)/Wrapper.module.scss"
 
 type wrapperProps = {
   children: ReactNode
