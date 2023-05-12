@@ -1,0 +1,76 @@
+@import "mixins";
+.hero {
+  padding-top: 65px;
+  position: relative;
+  margin: auto;
+  width: 90%;
+
+  @include breakpoint(small) {
+    width: 70%;
+  }
+  @include breakpoint(medium) {
+    width: 60%;
+  }
+  @include breakpoint(large) {
+    width: 50%;
+  }
+
+  h1 {
+    display: block;
+    margin: 0;
+    text-align: center;
+    @include breakpoint(small) {
+      width: 150px;
+      text-indent: -30%;
+    }
+    @include breakpoint(medium) {
+      width: 180px;
+    }
+    @include breakpoint(large) {
+      width: 200px;
+    }
+  }
+
+  &__name {
+    position: relative;
+    font-size: 2rem;
+    @include breakpoint(small) {
+      font-size: 2.2rem;
+      position: absolute;
+      left: -5%;
+      top: 25%;
+    }
+    @include breakpoint(medium) {
+      font-size: 2.5rem;
+    }
+    @include breakpoint(large) {
+      font-size: 3rem;
+      left: 0;
+      top: 25%;
+    }
+  }
+
+  &__picture {
+    width: 100%;
+    height: auto;
+  }
+
+  &__profession {
+    position: relative;
+    font-size: 1rem;
+    @include breakpoint(small) {
+      font-size: 2.2rem;
+      position: absolute;
+      bottom: 20%;
+      right: -15%;
+    }
+    @include breakpoint(medium) {
+      font-size: 2.5rem;
+    }
+    @include breakpoint(large) {
+      font-size: 3rem;
+      bottom: 20%;
+      right: -10%;
+    }
+  }
+}

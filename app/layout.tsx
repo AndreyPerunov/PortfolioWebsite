@@ -1,5 +1,5 @@
 // Styles
-import "./(styles)/main.scss"
+import "./styles/main.scss"
 
 // Fontawesome
 import { config } from "@fortawesome/fontawesome-svg-core"

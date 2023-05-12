@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
-import styles from "./(styles)/Header.module.scss"
+import styles from "./modules/Header.module.scss"
 
 const Header: FC = () => {
   return (
