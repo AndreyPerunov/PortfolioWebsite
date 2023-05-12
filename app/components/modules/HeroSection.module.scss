@@ -1,6 +1,8 @@
 @import "mixins";
+@import "variables";
+
 .hero {
-  padding-top: 65px;
+  padding-top: 35px;
   position: relative;
   margin: auto;
   width: 90%;
@@ -32,6 +34,7 @@
   }
 
   &__name {
+    animation: fadeInFromRight 1s;
     position: relative;
     font-size: 2rem;
     @include breakpoint(small) {
@@ -56,6 +59,7 @@
   }
 
   &__profession {
+    animation: fadeInFromLeft 1.5s;
     position: relative;
     font-size: 1rem;
     @include breakpoint(small) {
@@ -72,5 +76,91 @@
       bottom: 20%;
       right: -10%;
     }
+  }
+}
+
+.question {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding-top: 10px;
+  animation: fadeInFromTop 0.5s;
+  font-size: 1.5rem;
+}
+
+.button {
+  margin-top: 10px;
+  border-radius: 15px;
+  background-color: $base-color;
+  color: black;
+  text-decoration: none;
+  padding: 0.75rem 1.2rem;
+  display: inline-block;
+  animation: fadeInFromTop 1s;
+  font-size: 1rem;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.arrow {
+  display: block;
+  opacity: 0;
+  margin: auto;
+  color: $base-color;
+  font-size: 2em;
+  padding-top: 20px;
+  animation: arrowDown 1s infinite 1.2s;
+}
+
+@keyframes arrowDown {
+  0% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInFromTop {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInFromLeft {
+  0% {
+    // transform: translateX(-1000px) rotate(-360deg * 10);
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInFromRight {
+  0% {
+    // transform: translateX(1000px) rotate(360deg * 10);
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

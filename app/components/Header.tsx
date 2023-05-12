@@ -7,8 +7,12 @@ const Header: FC = () => {
   return (
     <nav className={styles.header}>
       <div className={styles.header__icons}>
-        <FontAwesomeIcon icon={faLinkedinIn} />
-        <FontAwesomeIcon icon={faGithub} />
+        <a href="https://www.linkedin.com/in/andrey-perunov/">
+          <FontAwesomeIcon icon={faLinkedinIn} />
+        </a>
+        <a href="https://github.com/AndreyPerunov">
+          <FontAwesomeIcon icon={faGithub} />
+        </a>
       </div>
       <ul>
         <li>

@@ -6,7 +6,10 @@
 
   &__icons {
     display: block;
+    text-decoration: none;
+
     svg {
+      color: #000;
       padding-right: 30px;
       width: 25px;
       height: 25px;
