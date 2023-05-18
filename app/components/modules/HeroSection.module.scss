@@ -104,16 +104,6 @@
   }
 }
 
-.arrow {
-  display: block;
-  opacity: 0;
-  margin: auto;
-  color: $base-color;
-  font-size: 2em;
-  padding-top: 20px;
-  animation: arrowDown 1s infinite 1.2s;
-}
-
 @keyframes arrowDown {
   0% {
     transform: translateY(-15px);

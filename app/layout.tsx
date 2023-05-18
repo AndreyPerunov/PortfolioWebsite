@@ -28,7 +28,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={allerta.className}>{children}</body>
+      <body suppressHydrationWarning={true} className={allerta.className}>
+        {children}
+      </body>
     </html>
   )
 }

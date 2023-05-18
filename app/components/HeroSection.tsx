@@ -2,8 +2,7 @@ import { FC } from "react"
 import styles from "./modules/HeroSection.module.scss"
 import Image from "next/image"
 import Me from "../../public/Me.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleDown } from "@fortawesome/free-solid-svg-icons"
+import ArrowDown from "./ArrowDown"
 // Fonts
 import { Allerta_Stencil } from "next/font/google"
 const allerta_Stencil = Allerta_Stencil({ weight: "400", subsets: ["latin"] })
@@ -24,7 +23,7 @@ const HeroSection: FC = () => {
         </a>
       </div>
 
-      <FontAwesomeIcon className={styles.arrow} icon={faCircleDown} />
+      <ArrowDown />
     </>
   )
 }
