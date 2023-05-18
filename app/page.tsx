@@ -2,6 +2,7 @@ import { FC } from "react"
 import HeroSection from "./components/HeroSection"
 import Header from "./components/Header"
 import Wrapper from "./components/Wrapper"
+import Projects from "./components/Projects"
 
 const Index: FC = () => {
   return (
@@ -9,6 +10,7 @@ const Index: FC = () => {
       <Wrapper>
         <Header />
         <HeroSection />
+        <Projects />
       </Wrapper>
     </>
   )
