@@ -10,6 +10,8 @@ const Index: FC = () => {
       <Wrapper>
         <Header />
         <HeroSection />
+      </Wrapper>
+      <Wrapper narrow={true}>
         <Projects />
       </Wrapper>
     </>

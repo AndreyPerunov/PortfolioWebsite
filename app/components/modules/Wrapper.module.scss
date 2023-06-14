@@ -9,5 +9,9 @@
   @include breakpoint(small) {
     padding-left: 18px;
     padding-right: 18px;
+    &Narrow {
+      padding-left: 82px;
+      padding-right: 82px;
+    }
   }
 }
