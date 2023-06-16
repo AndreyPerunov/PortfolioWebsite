@@ -1,9 +1,11 @@
-import { FC, ReactNode } from "react"
+import { FC } from "react"
 import Image, { StaticImageData } from "next/image"
+// Images
 import ComplexReactApp from "../../public/Complex React App.png"
 import TravelSite from "../../public/Travel Site.png"
 import VideoPlayer from "../../public/Video Player.png"
 import ComplexApp from "../../public/Complex App.png"
+// Icons
 import WebPackIcon from "../../public/Web Pack.svg"
 import ReactIcon from "../../public/React.svg"
 import GitIcon from "../../public/Git.svg"
@@ -12,6 +14,10 @@ import MongoDBIcon from "../../public/MongoDB.svg"
 import AxiosIcon from "../../public/Axios.png"
 import JWTIcon from "../../public/JWT.svg"
 import ExpressJSIcon from "../../public/Expressjs.png"
+import PostCSSIcon from "../../public/PostCSS.png"
+import LodashJSIcon from "../../public/LodashJS.png"
+import SassIcon from "../../public/Sass.svg"
+// Styles
 import styles from "./modules/Project.module.scss"
 
 type Tool = {
@@ -68,6 +74,8 @@ const Projects: FC = () => {
         image={TravelSite}
         body="Travel Site website is oriented to test my html, css and optimization skills."
         stack={[
+          { name: "PostCSS", src: PostCSSIcon },
+          { name: "Lodash.js", src: LodashJSIcon },
           { name: "Web Pack", src: WebPackIcon },
           { name: "Git", src: GitIcon }
         ]}
@@ -78,6 +86,7 @@ const Projects: FC = () => {
         body="This player is a copy of an YouTube video player. With a responsive layout. Made in React.js."
         stack={[
           { name: "React", src: ReactIcon },
+          { name: "Sass", src: SassIcon },
           { name: "Web Pack", src: WebPackIcon },
           { name: "Git", src: GitIcon }
         ]}
