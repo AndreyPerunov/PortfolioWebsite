@@ -1,4 +1,7 @@
+"use client"
 import { FC } from "react"
+import { useEffect, useRef, useState } from "react"
+import { throttle } from "lodash"
 import Image, { StaticImageData } from "next/image"
 // Images
 import ComplexReactApp from "../../public/Complex React App.png"
@@ -33,8 +36,32 @@ type projectProps = {
 }
 
 const Project: FC<projectProps> = ({ title, image, body, stack }) => {
+  const [isRevealed, setIsRevealed] = useState(false)
+  const projectRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      if (projectRef.current) {
+        const rect = projectRef.current.getBoundingClientRect()
+        let scrollPercent = (rect.y / window.innerHeight) * 100
+        if (scrollPercent < 75) {
+          setIsRevealed(true)
+          window.removeEventListener("scroll", scrollThrottle)
+        }
+      }
+    }
+
+    const scrollThrottle = throttle(scrollHandler, 300)
+    scrollHandler()
+    window.addEventListener("scroll", scrollThrottle)
+
+    return () => {
+      window.removeEventListener("scroll", scrollHandler)
+    }
+  }, [])
+
   return (
-    <div className={styles.project}>
+    <div ref={projectRef} className={styles.project + ` ${isRevealed ? styles.projectReveal : ""}`}>
       <Image className={styles.project__image} alt={title} src={image} />
       <div className={styles.project_info}>
         <h1 className={styles.project__title}>{title}</h1>

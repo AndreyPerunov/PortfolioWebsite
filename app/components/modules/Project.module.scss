@@ -1,3 +1,6 @@
+@import "mixins";
+@import "variables";
+
 .project {
   border-radius: 30px;
   background-color: #ffffff80;
@@ -6,6 +9,30 @@
   padding: 50px;
   width: 100%;
   margin-top: 20px;
+  transform: translateX(-100px);
+  opacity: 0;
+
+  &Reveal {
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    transform: translateX(0);
+    opacity: 1;
+
+    .project__techStack {
+      img {
+        transform: translateY(0);
+        opacity: 1;
+        filter: hue-rotate(0);
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            transition-delay: calc($i * $delay), calc($i * $delay), calc($i * $delay);
+            transition-duration: 0.6s;
+            transition-property: transform, opacity, filter;
+            transition-timing-function: ease-out;
+          }
+        }
+      }
+    }
+  }
 
   &__image {
     width: 50%;
@@ -39,6 +66,9 @@
     img {
       height: 30px;
       width: auto;
+      transform: translateY(-30px);
+      filter: hue-rotate(360deg);
+      opacity: 0;
     }
   }
 }
