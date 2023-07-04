@@ -13,18 +13,17 @@ const ArrowDown: FC = () => {
     const checkScroll = () => {
       if (iconRef.current) {
         const rect = iconRef.current.getBoundingClientRect()
-        console.log(rect)
         if (rect.y <= 100) {
           setIsAtTop(true)
           window.removeEventListener("scroll", scrollThrottle)
         }
       }
     }
-    const scrollThrottle = throttle(checkScroll, 300)
+    const scrollThrottle = throttle(checkScroll, 150)
     window.addEventListener("scroll", scrollThrottle)
 
     return () => {
-      window.removeEventListener("scroll", checkScroll)
+      window.removeEventListener("scroll", scrollThrottle)
     }
   }, [])
 
