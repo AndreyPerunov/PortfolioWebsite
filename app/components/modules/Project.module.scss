@@ -102,6 +102,7 @@
     position: absolute;
     filter: blur(80px);
     background-color: $base-color;
+    transition: top 0.3s ease-in-out;
   }
 
   &__backgroundSphere:nth-child(1) {
@@ -131,5 +132,13 @@
     height: 50vh;
     right: 0;
     top: 200vh;
+  }
+
+  &__backgroundSphere:nth-child(5) {
+    width: 20vw;
+    transform: rotate(50deg);
+    height: 100vh;
+    left: 0;
+    top: 250vh;
   }
 }
