@@ -3,6 +3,7 @@ import { FC } from "react"
 import { useEffect, useRef, useState } from "react"
 import { throttle } from "lodash"
 import Image, { StaticImageData } from "next/image"
+import Button from "./Button"
 // Images
 import ComplexReactApp from "../../public/Complex React App.png"
 import TravelSite from "../../public/Travel Site.png"
@@ -33,9 +34,11 @@ type projectProps = {
   image: StaticImageData
   body: string
   stack: Tool[]
+  gitHubLink: string
+  websiteLink: string
 }
 
-const Project: FC<projectProps> = ({ title, image, body, stack }) => {
+const Project: FC<projectProps> = ({ title, image, body, stack, gitHubLink, websiteLink }) => {
   const [isRevealed, setIsRevealed] = useState(false)
   const projectRef = useRef<HTMLDivElement | null>(null)
 
@@ -72,6 +75,12 @@ const Project: FC<projectProps> = ({ title, image, body, stack }) => {
             <Image key={index} src={tool.src} alt={tool.name} title={tool.name} />
           ))}
         </div>
+        <Button href={websiteLink} style={{ marginRight: "10px", marginTop: "15px" }}>
+          Checkout
+        </Button>
+        <Button href={gitHubLink} hollow={true}>
+          Github
+        </Button>
       </div>
     </div>
   )
@@ -119,6 +128,8 @@ const Projects: FC = () => {
           { name: "JWT", src: JWTIcon },
           { name: "Express.js", src: ExpressJSIcon }
         ]}
+        gitHubLink="https://github.com/AndreyPerunov/frontendforreactappcourse"
+        websiteLink="https://visionary-liger-54eeac.netlify.app/"
       />
       <Project
         title="Travel Site"
@@ -130,6 +141,8 @@ const Projects: FC = () => {
           { name: "Web Pack", src: WebPackIcon },
           { name: "Git", src: GitIcon }
         ]}
+        gitHubLink="https://github.com/AndreyPerunov/travel-site"
+        websiteLink="https://flourishing-choux-f7c35e.netlify.app/"
       />
       <Project
         title="Video Player"
@@ -141,6 +154,8 @@ const Projects: FC = () => {
           { name: "Web Pack", src: WebPackIcon },
           { name: "Git", src: GitIcon }
         ]}
+        gitHubLink="https://github.com/AndreyPerunov/Video-Player"
+        websiteLink="https://andreyperunov.github.io/Video-Player/"
       />
       <Project
         title="Complex App"
@@ -154,6 +169,8 @@ const Projects: FC = () => {
           { name: "JWT", src: JWTIcon },
           { name: "Express.js", src: ExpressJSIcon }
         ]}
+        gitHubLink="https://github.com/AndreyPerunov/complex-app"
+        websiteLink=""
       />
     </div>
   )
