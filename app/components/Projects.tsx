@@ -80,6 +80,10 @@ const Project: FC<projectProps> = ({ title, image, body, stack }) => {
 const Projects: FC = () => {
   return (
     <div className={styles.projects}>
+      <div className={styles.projects__backgroundSphere}></div>
+      <div className={styles.projects__backgroundSphere}></div>
+      <div className={styles.projects__backgroundSphere}></div>
+      <div className={styles.projects__backgroundSphere}></div>
       <h1 className={styles.projects__title}>Recent Projects</h1>
       <Project
         title="Complex React App"

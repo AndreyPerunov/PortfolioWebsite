@@ -6,7 +6,7 @@ import Projects from "./components/Projects"
 
 const Index: FC = () => {
   return (
-    <>
+    <div style={{ overflow: "hidden" }}>
       <Wrapper>
         <Header />
         <HeroSection />
@@ -14,7 +14,7 @@ const Index: FC = () => {
       <Wrapper narrow={true}>
         <Projects />
       </Wrapper>
-    </>
+    </div>
   )
 }
 
