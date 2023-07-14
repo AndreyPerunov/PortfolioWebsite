@@ -7,17 +7,14 @@ const Header: FC = () => {
   return (
     <nav className={styles.header}>
       <div className={styles.header__icons}>
-        <a href="https://www.linkedin.com/in/andrey-perunov/">
+        <a aria-label="My LinkedIn profile" href="https://www.linkedin.com/in/andrey-perunov/">
           <FontAwesomeIcon icon={faLinkedinIn} />
         </a>
-        <a href="https://github.com/AndreyPerunov">
+        <a aria-label="My GitHub profile" href="https://github.com/AndreyPerunov">
           <FontAwesomeIcon icon={faGithub} />
         </a>
       </div>
       <ul>
-        <li>
-          <a href="">Home</a>
-        </li>
         <li>
           <a href="">Work</a>
         </li>
