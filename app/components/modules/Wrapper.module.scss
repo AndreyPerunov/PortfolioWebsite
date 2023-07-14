@@ -6,6 +6,10 @@
   margin-right: auto;
   padding-left: 0px;
   padding-right: 0px;
+  &Narrow {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
   @include breakpoint(small) {
     padding-left: 18px;
     padding-right: 18px;

@@ -4,13 +4,18 @@
 .project {
   border-radius: 30px;
   background-color: #ffffff80;
-  display: flex;
+  display: inline-block;
   align-items: center;
-  padding: 50px;
+  padding: 25px;
   width: 100%;
   margin-top: 20px;
   transform: translateX(-100px);
   opacity: 0;
+
+  @include breakpoint(medium) {
+    display: flex;
+    padding: 50px;
+  }
 
   &Reveal {
     transition: transform 0.4s ease-out, opacity 0.4s ease-out;
@@ -35,7 +40,10 @@
   }
 
   &__image {
-    width: 50%;
+    width: 100%;
+    @include breakpoint(large) {
+      width: 50%;
+    }
     height: auto;
     aspect-ratio: 16 / 10;
     border-radius: 20px;
@@ -45,6 +53,10 @@
 
   &__title {
     margin: 0;
+    margin-top: 20px;
+    @include breakpoint(large) {
+      margin-top: 0;
+    }
     margin-bottom: 15px;
     font-size: 1.5625rem;
   }
