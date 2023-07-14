@@ -3,6 +3,7 @@ import styles from "./modules/HeroSection.module.scss"
 import Image from "next/image"
 import Me from "../../public/Me.png"
 import ArrowDown from "./ArrowDown"
+import Button from "./Button"
 // Fonts
 import { Allerta_Stencil } from "next/font/google"
 const allerta_Stencil = Allerta_Stencil({ weight: "400", subsets: ["latin"] })
@@ -18,9 +19,7 @@ const HeroSection: FC = () => {
       <p className={styles.question}>Have an offer?</p>
 
       <div style={{ textAlign: "center" }}>
-        <a className={styles.button} href="">
-          Let's Talk!
-        </a>
+        <Button href="#">Let's Talk!</Button>
       </div>
 
       <ArrowDown />

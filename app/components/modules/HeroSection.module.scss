@@ -89,22 +89,6 @@
   font-size: 1.5rem;
 }
 
-.button {
-  margin-top: 10px;
-  border-radius: 15px;
-  background-color: $base-color;
-  color: black;
-  text-decoration: none;
-  padding: 0.75rem 1.2rem;
-  display: inline-block;
-  animation: fadeInFromTop 1s;
-  font-size: 1rem;
-
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
 @keyframes arrowDown {
   0% {
     transform: translateY(-15px);

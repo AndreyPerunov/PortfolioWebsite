@@ -1,0 +1,27 @@
+@import "variables";
+
+.button {
+  margin-top: 10px;
+  border-radius: 15px;
+  background-color: $base-color;
+  color: black;
+  text-decoration: none;
+  padding: 0.75rem 1.2rem;
+  display: inline-block;
+  animation: fadeInFromTop 1s;
+  font-size: 1rem;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &Hollow {
+    background-color: transparent;
+    border: 2px $base-color solid;
+
+    &:hover {
+      background-color: $base-color;
+      opacity: 1;
+    }
+  }
+}
