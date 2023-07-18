@@ -1,0 +1,60 @@
+@import "variables";
+
+.projects {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 100px;
+
+  &__title {
+    padding-bottom: 30px;
+    margin: 0;
+    font-size: 1.875rem;
+  }
+
+  &__backgroundSphere {
+    position: absolute;
+    filter: blur(80px);
+    background-color: $base-color;
+    transition: top 0.1s ease-in-out;
+    z-index: -1;
+  }
+
+  &__backgroundSphere:nth-child(1) {
+    width: 30vw;
+    height: 50vh;
+    left: 0;
+  }
+
+  &__backgroundSphere:nth-child(2) {
+    width: 20vw;
+    height: 100vh;
+    transform: rotate(-30deg);
+    right: 0;
+    top: 60vh;
+  }
+
+  &__backgroundSphere:nth-child(3) {
+    width: 10vw;
+    height: 100vh;
+    transform: rotate(30deg);
+    left: 0;
+    top: 120vh;
+  }
+
+  &__backgroundSphere:nth-child(4) {
+    width: 30vw;
+    height: 50vh;
+    right: 0;
+    top: 200vh;
+  }
+
+  &__backgroundSphere:nth-child(5) {
+    width: 20vw;
+    transform: rotate(50deg);
+    height: 100vh;
+    left: 0;
+    top: 250vh;
+  }
+}
