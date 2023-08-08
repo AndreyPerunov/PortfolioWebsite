@@ -4,6 +4,7 @@ import { throttle } from "lodash"
 import Image, { StaticImageData } from "next/image"
 import Button from "./Button"
 import styles from "./modules/Project.module.scss"
+import { Tooltip } from "react-tooltip"
 
 type Tool = {
   name: string
@@ -53,7 +54,10 @@ const Project: FC<projectProps> = ({ title, image, body, stack, gitHubLink, webs
         <p className={styles.project__techStackColon}>Tech stack:</p>
         <div className={styles.project__techStack}>
           {stack.map((tool, index) => (
-            <Image key={index} src={tool.src} alt={tool.name} title={tool.name} />
+            <>
+              <Image data-tooltip-id={tool.name} data-tooltip-content={tool.name} data-tooltip-variant="dark" data-tooltip-delay-show={300} key={index} src={tool.src} alt={tool.name} />
+              <Tooltip id={tool.name} />
+            </>
           ))}
         </div>
         <Button href={websiteLink} style={{ marginRight: "10px", marginTop: "15px" }}>
