@@ -60,10 +60,10 @@ const Project: FC<projectProps> = ({ title, image, body, stack, gitHubLink, webs
             </>
           ))}
         </div>
-        <Button href={websiteLink} style={{ marginRight: "10px", marginTop: "15px" }}>
+        <Button href={websiteLink} style={{ marginRight: "10px", marginTop: "15px" }} openInNewTab={true}>
           Checkout
         </Button>
-        <Button href={gitHubLink} hollow={true}>
+        <Button href={gitHubLink} hollow={true} openInNewTab={true}>
           Github
         </Button>
       </div>
