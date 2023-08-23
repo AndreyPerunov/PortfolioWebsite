@@ -140,7 +140,6 @@
 }
 @keyframes fadeInFromLeft {
   0% {
-    // transform: translateX(-1000px) rotate(-360deg * 10);
     transform: translateX(-100px);
     opacity: 0;
   }
@@ -152,7 +151,6 @@
 
 @keyframes fadeInFromRight {
   0% {
-    // transform: translateX(1000px) rotate(360deg * 10);
     transform: translateX(100px);
     opacity: 0;
   }
