@@ -1,5 +1,6 @@
 "use client"
 import { FC, useEffect, useRef, useState } from "react"
+
 import styles from "./modules/HeroSection.module.scss"
 import Image from "next/image"
 import Me from "../../public/Me.png"
@@ -11,11 +12,6 @@ const allerta_Stencil = Allerta_Stencil({ weight: "400", subsets: ["latin"] })
 
 const HeroSection: FC = () => {
   const myPicture = useRef<HTMLImageElement | null>()
-  const bg1 = useRef<HTMLImageElement | null>()
-  const bg2 = useRef<HTMLImageElement | null>()
-  const bg3 = useRef<HTMLImageElement | null>()
-  const bg4 = useRef<HTMLImageElement | null>()
-  const bg5 = useRef<HTMLImageElement | null>()
   const [mouseX, setMouseX] = useState(0)
   const [mouseY, setMouseY] = useState(0)
   useEffect(() => {
@@ -26,7 +22,6 @@ const HeroSection: FC = () => {
         const centerY = myPictureRect.height / 2 + myPictureRect.y
         setMouseX((e.clientX - centerX) / 500)
         setMouseY((e.clientY - centerY) / 500)
-        console.log("test")
       }
     }
 
@@ -43,17 +38,6 @@ const HeroSection: FC = () => {
         <div className={styles.hero__banner__img_container}>
           <Image
             style={{
-              top: `${mouseY * -15}px`,
-              left: `${mouseX * -15}px`
-            }}
-            className={styles.hero__banner__img_container__pictureBackground}
-            priority
-            alt="Background Image"
-            src={Me}
-            ref={bg1}
-          />
-          <Image
-            style={{
               top: `${mouseY * -30}px`,
               left: `${mouseX * -30}px`
             }}
@@ -61,7 +45,6 @@ const HeroSection: FC = () => {
             priority
             alt="Background Image"
             src={Me}
-            ref={bg2}
           />
           <Image
             style={{
@@ -72,7 +55,6 @@ const HeroSection: FC = () => {
             priority
             alt="Background Image"
             src={Me}
-            ref={bg3}
           />
           <Image
             style={{
@@ -83,7 +65,6 @@ const HeroSection: FC = () => {
             priority
             alt="Background Image"
             src={Me}
-            ref={bg4}
           />
           <Image
             style={{
@@ -94,9 +75,28 @@ const HeroSection: FC = () => {
             priority
             alt="Background Image"
             src={Me}
-            ref={bg5}
           />
-          <Image className={styles.hero__banner__img_container__picture} priority alt="My Picture" src={Me} ref={myPicture} />
+          <Image
+            style={{
+              top: `${mouseY * -100}px`,
+              left: `${mouseX * -100}px`
+            }}
+            className={styles.hero__banner__img_container__pictureBackground}
+            priority
+            alt="Background Image"
+            src={Me}
+          />
+          <Image
+            style={{
+              top: `${mouseY * -10}px`,
+              left: `${mouseX * -10}px`
+            }}
+            className={styles.hero__banner__img_container__picture}
+            priority
+            alt="My Picture"
+            src={Me}
+            ref={myPicture}
+          />
         </div>
         <h1 className={styles.hero__banner__name + " " + allerta_Stencil.className}>Andrey Perunov</h1>
         <h1 className={styles.hero__banner__profession + " " + allerta_Stencil.className}>Full-stack developer</h1>
