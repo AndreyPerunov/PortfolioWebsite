@@ -8,3 +8,14 @@
 body {
   background-color: rgb(249, 248, 255);
 }
+
+div,
+p,
+h1,
+img,
+a {
+  &::selection {
+    color: white;
+    background: #c9a30bbb;
+  }
+}
