@@ -1,34 +1,40 @@
 "use client"
-import { FC, useEffect, useRef } from "react"
+import { FC, useEffect, useRef, useState } from "react"
 import styles from "./modules/Skills.module.scss"
 
 const Skills: FC = () => {
   const cursor = useRef<HTMLDivElement>()
 
   const delay = 40
-  let cursorX = window.innerWidth / 2
-  let cursorY = window.innerHeight / 2
-  let delayedCursorX = window.innerWidth / 2
-  let delayedCursorY = window.innerHeight / 2
 
-  let requestCursorAnimation = null
+  const cursorX = useRef(0)
+  const cursorY = useRef(0)
+  const delayedCursorX = useRef(0)
+  const delayedCursorY = useRef(0)
 
-  const animateCursor = () => {
-    delayedCursorX += (cursorX - delayedCursorX) / delay
-    delayedCursorY += (cursorY - delayedCursorY) / delay
+  const requestAnimation = useRef(null)
 
-    if (delayedCursorY > 0) {
-      cursor.current.style.top = delayedCursorY + "px"
-      cursor.current.style.left = delayedCursorX + "px"
+  const animate = () => {
+    // Cursor
+    delayedCursorX.current += (cursorX.current - delayedCursorX.current) / delay
+    delayedCursorY.current += (cursorY.current - delayedCursorY.current) / delay
+
+    if (delayedCursorY.current > 0) {
+      cursor.current.style.top = delayedCursorY.current + "px"
+      cursor.current.style.left = delayedCursorX.current + "px"
     }
 
-    requestCursorAnimation = requestAnimationFrame(animateCursor)
+    requestAnimation.current = requestAnimationFrame(animate)
   }
 
   useEffect(() => {
-    animateCursor()
+    cursorX.current = window.innerWidth / 2
+    cursorY.current = window.innerHeight / 2
+    delayedCursorX.current = window.innerWidth / 2
+    delayedCursorY.current = window.innerHeight / 2
+    animate()
     return () => {
-      cancelAnimationFrame(requestCursorAnimation)
+      cancelAnimationFrame(requestAnimation.current)
     }
   }, [])
 
@@ -37,8 +43,8 @@ const Skills: FC = () => {
       <div className={styles.fade}></div>
       <div
         onMouseMove={e => {
-          cursorX = e.clientX
-          cursorY = e.clientY - e.currentTarget.getBoundingClientRect().top
+          cursorX.current = e.clientX
+          cursorY.current = e.clientY - e.currentTarget.getBoundingClientRect().top
           cursor.current.classList.add(styles.skills__cursorVisible)
         }}
         onMouseOut={() => {

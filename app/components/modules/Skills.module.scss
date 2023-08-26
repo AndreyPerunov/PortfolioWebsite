@@ -58,12 +58,22 @@
     color: $dark-color;
     font-size: 1rem;
 
+    &::selection {
+      color: $dark-color;
+      background: rgba(0, 0, 0, 0);
+    }
+
     &Found {
       animation: none;
       font-size: 1.25rem;
       filter: drop-shadow(0 0 10px white);
       transition: filter 0.5s ease-in-out, font-size 0.5s ease-in-out;
       transition-delay: 0.25s;
+
+      &::selection {
+        color: black;
+        background: rgba(255, 255, 255, 0.05);
+      }
     }
 
     @for $i from 1 through 20 {
@@ -71,11 +81,6 @@
         top: random(85) + vh;
         left: random(85) + vw;
       }
-    }
-
-    &::selection {
-      color: $dark-color;
-      background: rgba(0, 0, 0, 0);
     }
   }
 }
