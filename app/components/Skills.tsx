@@ -6,10 +6,10 @@ const Skills: FC = () => {
   const cursor = useRef<HTMLDivElement>()
 
   const delay = 40
-  let cursorX = 0
-  let cursorY = 0
-  let delayedCursorX = 0
-  let delayedCursorY = 0
+  let cursorX = window.innerWidth / 2
+  let cursorY = window.innerHeight / 2
+  let delayedCursorX = window.innerWidth / 2
+  let delayedCursorY = window.innerHeight / 2
 
   let requestCursorAnimation = null
 
@@ -39,6 +39,12 @@ const Skills: FC = () => {
         onMouseMove={e => {
           cursorX = e.clientX
           cursorY = e.clientY - e.currentTarget.getBoundingClientRect().top
+          cursor.current.classList.add(styles.skills__cursorVisible)
+        }}
+        onMouseOut={() => {
+          // cursorX = window.innerWidth / 2
+          // cursorY = window.innerHeight / 2
+          cursor.current.classList.remove(styles.skills__cursorVisible)
         }}
         className={styles.skills}
       >

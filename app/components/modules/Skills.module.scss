@@ -37,12 +37,18 @@
     position: absolute;
     border-radius: 50%;
     background-color: white;
-    width: 100px;
-    filter: blur(50px);
-    height: 100px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.01);
+    filter: blur(50px);
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    &Visible {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    transition: transform 1s ease-out, opacity 1s ease-out;
   }
 
   &__skill {
