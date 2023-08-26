@@ -3,6 +3,7 @@ import HeroSection from "./components/HeroSection"
 import Header from "./components/Header"
 import Wrapper from "./components/Wrapper"
 import Projects from "./components/Projects"
+import Skills from "./components/Skills"
 
 const Index: FC = () => {
   return (
@@ -14,6 +15,7 @@ const Index: FC = () => {
       <Wrapper narrow={true}>
         <Projects />
       </Wrapper>
+      <Skills />
     </div>
   )
 }
