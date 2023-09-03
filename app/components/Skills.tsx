@@ -1,9 +1,14 @@
 "use client"
 import { FC, useEffect, useRef, useState } from "react"
 import styles from "./modules/Skills.module.scss"
+import Skill from "./Skill"
 
 const Skills: FC = () => {
   const cursor = useRef<HTMLDivElement>()
+  const skills = useRef<HTMLDivElement>()
+
+  // const skillsArray = ["CSS", "HTML", "React", "Node.js", "TypeScript", "Next.js", "MongoDB", "Sass", "Deployment", "WebPack", "Express.js", "Git", "REST APIs", "Critical Thinking", "Problem Solving", "OOP", "SQL"]
+  const skillsArray = ["CSS"]
 
   const delay = 40
 
@@ -27,13 +32,30 @@ const Skills: FC = () => {
     requestAnimation.current = requestAnimationFrame(animate)
   }
 
+  const mouseMoveHandler = e => {
+    cursorX.current = e.clientX
+    cursorY.current = e.clientY - skills.current.getBoundingClientRect().top
+    cursor.current.classList.add(styles.skills__cursorVisible)
+  }
+
+  const mouseOutHandler = () => {
+    // cursorX = window.innerWidth / 2
+    // cursorY = window.innerHeight / 2
+    cursor.current.classList.remove(styles.skills__cursorVisible)
+  }
+
   useEffect(() => {
     cursorX.current = window.innerWidth / 2
     cursorY.current = window.innerHeight / 2
     delayedCursorX.current = window.innerWidth / 2
     delayedCursorY.current = window.innerHeight / 2
+
+    skills.current.addEventListener("mousemove", mouseMoveHandler)
+    skills.current.addEventListener("mouseout", mouseOutHandler)
     animate()
     return () => {
+      skills.current.removeEventListener("mousemove", mouseMoveHandler)
+      skills.current.removeEventListener("mouseout", mouseOutHandler)
       cancelAnimationFrame(requestAnimation.current)
     }
   }, [])
@@ -41,38 +63,19 @@ const Skills: FC = () => {
   return (
     <>
       <div className={styles.fade}></div>
-      <div
-        onMouseMove={e => {
-          cursorX.current = e.clientX
-          cursorY.current = e.clientY - e.currentTarget.getBoundingClientRect().top
-          cursor.current.classList.add(styles.skills__cursorVisible)
-        }}
-        onMouseOut={() => {
-          // cursorX = window.innerWidth / 2
-          // cursorY = window.innerHeight / 2
-          cursor.current.classList.remove(styles.skills__cursorVisible)
-        }}
-        className={styles.skills}
-      >
+      <div ref={skills} className={styles.skills}>
         <div ref={cursor} className={styles.skills__cursor}></div>
-        <p className={styles.skills__skill}>CSS</p>
-        <p className={styles.skills__skill}>HTML</p>
-        <p className={styles.skills__skill}>React</p>
-        <p className={styles.skills__skill}>JavaScript</p>
-        <p className={styles.skills__skill}>Node.js</p>
-        <p className={styles.skills__skill}>TypeScript</p>
-        <p className={styles.skills__skill}>Next.js</p>
-        <p className={styles.skills__skill}>MongoDB</p>
-        <p className={styles.skills__skill}>Sass</p>
-        <p className={styles.skills__skill}>Deployment</p>
-        <p className={styles.skills__skill}>WebPack</p>
-        <p className={styles.skills__skill}>Express.js</p>
-        <p className={styles.skills__skill}>Git</p>
-        <p className={styles.skills__skill}>REST APIs</p>
-        <p className={styles.skills__skill}>Critical Thinking</p>
-        <p className={styles.skills__skill}>Problem Solving</p>
-        <p className={styles.skills__skill}>OOP</p>
-        <p className={styles.skills__skill}>SQL</p>
+        {skillsArray.map((item, index) => {
+          let x = Math.floor(Math.random() * 2) + 1 // = 1 or 2
+          let y = Math.floor(Math.random() * 2) + 1 // = 1 or 2
+          x *= index % 2 === 0 ? 1 : -1 // x *= 1 or -1
+          y *= index % 3 === 0 ? 1 : -1 // y *= 1 or -1
+          return (
+            <Skill vector={{ x: x, y: y }} key={index}>
+              {item}
+            </Skill>
+          )
+        })}
         <div className={styles.skills__light}>
           <h1>My Hidden Talents</h1>
         </div>
