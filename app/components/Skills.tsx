@@ -7,8 +7,8 @@ const Skills: FC = () => {
   const cursor = useRef<HTMLDivElement>()
   const skills = useRef<HTMLDivElement>()
 
-  // const skillsArray = ["CSS", "HTML", "React", "Node.js", "TypeScript", "Next.js", "MongoDB", "Sass", "Deployment", "WebPack", "Express.js", "Git", "REST APIs", "Critical Thinking", "Problem Solving", "OOP", "SQL"]
-  const skillsArray = ["CSS"]
+  const skillsArray = ["CSS", "HTML", "React", "Node.js", "TypeScript", "Next.js", "MongoDB", "Sass", "Deployment", "WebPack", "Express.js", "Git", "REST APIs", "Critical Thinking", "Problem Solving", "OOP", "SQL"]
+  // const skillsArray = ["CSS"]
 
   const delay = 40
 
@@ -71,7 +71,7 @@ const Skills: FC = () => {
           x *= index % 2 === 0 ? 1 : -1 // x *= 1 or -1
           y *= index % 3 === 0 ? 1 : -1 // y *= 1 or -1
           return (
-            <Skill vector={{ x: x, y: y }} key={index}>
+            <Skill cursor={{ x: delayedCursorX, y: delayedCursorY }} vector={{ x: x, y: y }} key={index}>
               {item}
             </Skill>
           )
