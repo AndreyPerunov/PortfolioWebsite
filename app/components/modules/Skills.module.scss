@@ -30,6 +30,15 @@
         background: rgba(255, 255, 255, 0.05);
       }
     }
+
+    p {
+      text-align: center;
+      margin-top: 0;
+      &::selection {
+        color: black;
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
   }
 
   &__cursor {

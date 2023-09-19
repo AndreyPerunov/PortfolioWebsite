@@ -7,6 +7,7 @@ const Skills: FC = () => {
   const cursor = useRef<HTMLDivElement>()
   const skills = useRef<HTMLDivElement>()
 
+  const [foundSkillsCount, setFoundSkillsCount] = useState<number>(0)
   const skillsArray = ["CSS", "HTML", "React", "Node.js", "TypeScript", "Next.js", "MongoDB", "Sass", "Deployment", "WebPack", "Express.js", "Git", "REST APIs", "Critical Thinking", "Problem Solving", "OOP", "SQL"]
   // const skillsArray = ["CSS"]
 
@@ -71,13 +72,16 @@ const Skills: FC = () => {
           x *= index % 2 === 0 ? 1 : -1 // x *= 1 or -1
           y *= index % 3 === 0 ? 1 : -1 // y *= 1 or -1
           return (
-            <Skill cursor={{ x: delayedCursorX, y: delayedCursorY }} vector={{ x: x, y: y }} key={index}>
+            <Skill setFoundSkillsCount={setFoundSkillsCount} cursor={{ x: delayedCursorX, y: delayedCursorY }} vector={{ x: x, y: y }} key={index}>
               {item}
             </Skill>
           )
         })}
         <div className={styles.skills__light}>
           <h1>My Hidden Talents</h1>
+          <p>
+            {foundSkillsCount}/{skillsArray.length}
+          </p>
         </div>
       </div>
     </>

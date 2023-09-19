@@ -1,6 +1,6 @@
 "use client"
 import styles from "./modules/Skills.module.scss"
-import { FC, MutableRefObject, ReactNode, useEffect, useRef } from "react"
+import { FC, MutableRefObject, ReactNode, SetStateAction, useEffect, useRef } from "react"
 
 type skillProps = {
   children: ReactNode
@@ -12,9 +12,10 @@ type skillProps = {
     x: MutableRefObject<number>
     y: MutableRefObject<number>
   }
+  setFoundSkillsCount: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Skill: FC<skillProps> = ({ children, vector, cursor }) => {
+const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }) => {
   const skill = useRef<HTMLParagraphElement>(null)
   const requestAnimation = useRef(null)
 
@@ -32,6 +33,7 @@ const Skill: FC<skillProps> = ({ children, vector, cursor }) => {
     const isSkillIsAbove = skillYCenter.current < cursor.y.current + findingRadius
     if (isSkillOnTheRight && isSkillOnTheLeft && isSkillIsBelow && isSkillIsAbove) {
       skill.current.classList.add(styles.skills__skillFound)
+      setFoundSkillsCount(prev => prev + 1)
       cancelAnimationFrame(requestAnimation.current)
       return
     }
