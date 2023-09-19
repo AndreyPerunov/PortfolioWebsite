@@ -9,10 +9,10 @@ const Skills: FC = () => {
 
   const [foundSkillsCount, setFoundSkillsCount] = useState<number>(0)
   const skillsArray = ["CSS", "HTML", "React", "Node.js", "TypeScript", "Next.js", "MongoDB", "Sass", "Deployment", "WebPack", "Express.js", "Git", "REST APIs", "Critical Thinking", "Problem Solving", "OOP", "SQL"]
-  // const skillsArray = ["CSS"]
 
   const delay = 40
 
+  const cursorVisible = useRef(false)
   const cursorX = useRef(0)
   const cursorY = useRef(0)
   const delayedCursorX = useRef(0)
@@ -36,12 +36,12 @@ const Skills: FC = () => {
   const mouseMoveHandler = e => {
     cursorX.current = e.clientX
     cursorY.current = e.clientY - skills.current.getBoundingClientRect().top
+    cursorVisible.current = true
     cursor.current.classList.add(styles.skills__cursorVisible)
   }
 
   const mouseOutHandler = () => {
-    // cursorX = window.innerWidth / 2
-    // cursorY = window.innerHeight / 2
+    cursorVisible.current = false
     cursor.current.classList.remove(styles.skills__cursorVisible)
   }
 
@@ -72,7 +72,7 @@ const Skills: FC = () => {
           x *= index % 2 === 0 ? 1 : -1 // x *= 1 or -1
           y *= index % 3 === 0 ? 1 : -1 // y *= 1 or -1
           return (
-            <Skill setFoundSkillsCount={setFoundSkillsCount} cursor={{ x: delayedCursorX, y: delayedCursorY }} vector={{ x: x, y: y }} key={index}>
+            <Skill setFoundSkillsCount={setFoundSkillsCount} cursor={{ x: delayedCursorX, y: delayedCursorY, visible: cursorVisible }} vector={{ x: x, y: y }} key={index}>
               {item}
             </Skill>
           )

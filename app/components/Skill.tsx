@@ -11,6 +11,7 @@ type skillProps = {
   cursor: {
     x: MutableRefObject<number>
     y: MutableRefObject<number>
+    visible: MutableRefObject<boolean>
   }
   setFoundSkillsCount: React.Dispatch<React.SetStateAction<number>>
 }
@@ -31,7 +32,7 @@ const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }
     const isSkillOnTheLeft = skillXCenter.current < cursor.x.current + findingRadius
     const isSkillIsBelow = skillYCenter.current > cursor.y.current - findingRadius
     const isSkillIsAbove = skillYCenter.current < cursor.y.current + findingRadius
-    if (isSkillOnTheRight && isSkillOnTheLeft && isSkillIsBelow && isSkillIsAbove) {
+    if (isSkillOnTheRight && isSkillOnTheLeft && isSkillIsBelow && isSkillIsAbove && cursor.visible.current) {
       skill.current.classList.add(styles.skills__skillFound)
       setFoundSkillsCount(prev => prev + 1)
       cancelAnimationFrame(requestAnimation.current)
