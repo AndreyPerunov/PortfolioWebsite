@@ -66,6 +66,7 @@
     animation: shake 0.15s infinite;
     color: $dark-color;
     font-size: 1rem;
+    pointer-events: none;
 
     &::selection {
       color: $dark-color;
