@@ -57,6 +57,9 @@
       transform: translate(-50%, -50%) scale(1);
       opacity: 1;
     }
+    &Flash {
+      animation: flashing 4s forwards ease-in-out;
+    }
     transition: transform 1s ease-in-out, opacity 1s ease-in-out;
   }
 
@@ -125,5 +128,34 @@
   }
   100% {
     filter: drop-shadow(0 0 10px white);
+  }
+}
+
+@keyframes flashing {
+  0% {
+    z-index: 30;
+  }
+  10% {
+    transform: translate(-50%, -50%) scale(0.01);
+    z-index: 30;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+    z-index: 30;
+    width: 100px;
+    height: 100px;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(10);
+    z-index: 30;
+    width: 300px;
+    height: 300px;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(10);
+    z-index: 30;
+    width: 300px;
+    height: 300px;
   }
 }

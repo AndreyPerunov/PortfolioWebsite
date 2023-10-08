@@ -1,5 +1,5 @@
 "use client"
-import { FC, useEffect, useRef, useState } from "react"
+import { FC, useEffect, useRef, useState, useCallback } from "react"
 import styles from "./modules/SkillsNotFound.module.scss"
 import Skill from "./Skill"
 
@@ -48,34 +48,39 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
   }
 
   // Tracking CURSOR position
-  const mouseMoveHandler = e => {
+  const mouseMoveHandler = useCallback(e => {
     cursorX.current = e.clientX
     cursorY.current = e.clientY - skills.current.getBoundingClientRect().top
-  }
+  }, [])
 
   // Hide delayedCURSOR (tourch-light)
-  const mouseOutHandler = () => {
+  const mouseOutHandler = useCallback(() => {
     cursorVisible.current = false
     cursor.current.classList.remove(styles.skills__cursorVisible)
-  }
+  }, [])
 
   // Show delayedCURSOR (tourch-light)
-  const mouseOverHandler = () => {
+  const mouseOverHandler = useCallback(() => {
     cursorVisible.current = true
     cursor.current.classList.add(styles.skills__cursorVisible)
-  }
+  }, [])
 
   // Track when all Skills are found
   useEffect(() => {
-    if (foundSkillsCount == 17) {
+    if (foundSkillsCount == skillsArray.length) {
       // Clear events on unmount
       skills.current.removeEventListener("mousemove", mouseMoveHandler)
       skills.current.removeEventListener("mouseout", mouseOutHandler)
       skills.current.removeEventListener("mouseover", mouseOverHandler)
       cancelAnimationFrame(requestAnimation.current)
 
+      // Flash
+      cursor.current.classList.add(styles.skills__cursorFlash)
+
       // Set that evereting is found
-      setAllFound(true)
+      setTimeout(() => {
+        setAllFound(true)
+      }, 4000)
     }
   }, [foundSkillsCount])
 

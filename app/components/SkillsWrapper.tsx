@@ -2,12 +2,13 @@
 
 import { useState } from "react"
 import SkillsNotFound from "./SkillsNotFound"
+import SkillsFound from "./SkillsFound"
 
 const Skills = () => {
   const [allFound, setAllFound] = useState<boolean>(false)
 
   if (allFound) {
-    return <h1>Success</h1>
+    return <SkillsFound />
   } else {
     return <SkillsNotFound setAllFound={setAllFound} />
   }
