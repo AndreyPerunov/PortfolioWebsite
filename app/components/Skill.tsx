@@ -1,6 +1,6 @@
 "use client"
 import styles from "./modules/Skills.module.scss"
-import { FC, MutableRefObject, ReactNode, SetStateAction, useEffect, useRef } from "react"
+import { FC, MutableRefObject, ReactNode, useEffect, useRef } from "react"
 
 type skillProps = {
   // Skill name passed
@@ -85,8 +85,8 @@ const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }
     skillX.current = Number(getComputedStyle(skill.current).left.slice(0, -2))
     skillY.current = Number(getComputedStyle(skill.current).top.slice(0, -2))
     // Set initial center
-    skillXCenter.current = skill.current.getBoundingClientRect().left + skill.current.getBoundingClientRect().width / 2
-    skillYCenter.current = skill.current.getBoundingClientRect().top + skill.current.getBoundingClientRect().height / 2
+    skillXCenter.current = skill.current.offsetLeft + skill.current.clientLeft / 2
+    skillYCenter.current = skill.current.offsetTop + skill.current.clientHeight / 2
     // Start animation
     animate()
 
