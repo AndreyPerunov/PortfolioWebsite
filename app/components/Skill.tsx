@@ -34,7 +34,7 @@ const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }
 
   const animate = () => {
     // Cursor Hover
-    const findingRadius = 300
+    const findingRadius = 50
 
     // Check position of a SKILL in relation to CURSOR
     const isSkillOnTheRight = skillXCenter.current > cursor.x.current - findingRadius
