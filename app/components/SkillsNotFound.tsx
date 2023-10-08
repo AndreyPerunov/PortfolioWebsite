@@ -1,9 +1,13 @@
 "use client"
 import { FC, useEffect, useRef, useState } from "react"
-import styles from "./modules/Skills.module.scss"
+import styles from "./modules/SkillsNotFound.module.scss"
 import Skill from "./Skill"
 
-const Skills: FC = () => {
+type skillsNotFoundPops = {
+  setAllFound: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
   const cursor = useRef<HTMLDivElement>()
   const skills = useRef<HTMLDivElement>()
   const requestAnimation = useRef(null)
@@ -52,16 +56,28 @@ const Skills: FC = () => {
   // Hide delayedCURSOR (tourch-light)
   const mouseOutHandler = () => {
     cursorVisible.current = false
-    console.log(cursorVisible.current)
     cursor.current.classList.remove(styles.skills__cursorVisible)
   }
 
   // Show delayedCURSOR (tourch-light)
   const mouseOverHandler = () => {
     cursorVisible.current = true
-    console.log(cursorVisible.current)
     cursor.current.classList.add(styles.skills__cursorVisible)
   }
+
+  // Track when all Skills are found
+  useEffect(() => {
+    if (foundSkillsCount == 17) {
+      // Clear events on unmount
+      skills.current.removeEventListener("mousemove", mouseMoveHandler)
+      skills.current.removeEventListener("mouseout", mouseOutHandler)
+      skills.current.removeEventListener("mouseover", mouseOverHandler)
+      cancelAnimationFrame(requestAnimation.current)
+
+      // Set that evereting is found
+      setAllFound(true)
+    }
+  }, [foundSkillsCount])
 
   useEffect(() => {
     // Set initial position of corsor and delayedCursor
@@ -70,23 +86,22 @@ const Skills: FC = () => {
     delayedCursorX.current = window.innerWidth / 2
     delayedCursorY.current = window.innerHeight / 2
 
-    // Subscribing to MouseMove event to animate cursor
-    skills.current.addEventListener("mousemove", mouseMoveHandler)
+    // Fixing problem that skills ref is mutable
+    const skillsInstance = skills.current
 
-    // Subscribing to MouseOut event to hide cursor
-    skills.current.addEventListener("mouseout", mouseOutHandler)
-
-    // Subscribing to MouseOver event to show cursor
-    skills.current.addEventListener("mouseover", mouseOverHandler)
+    // Subscribing to events to animate cursor
+    skillsInstance.addEventListener("mousemove", mouseMoveHandler)
+    skillsInstance.addEventListener("mouseout", mouseOutHandler)
+    skillsInstance.addEventListener("mouseover", mouseOverHandler)
 
     // Animate. Run this funtion for every frame.
     animate()
 
     // Clear events on unmount
     return () => {
-      skills.current.removeEventListener("mousemove", mouseMoveHandler)
-      skills.current.removeEventListener("mouseout", mouseOutHandler)
-      skills.current.removeEventListener("mouseover", mouseOverHandler)
+      skillsInstance.removeEventListener("mousemove", mouseMoveHandler)
+      skillsInstance.removeEventListener("mouseout", mouseOutHandler)
+      skillsInstance.removeEventListener("mouseover", mouseOverHandler)
       cancelAnimationFrame(requestAnimation.current)
     }
   }, [])
@@ -122,4 +137,4 @@ const Skills: FC = () => {
   )
 }
 
-export default Skills
+export default SkillsNotFound
