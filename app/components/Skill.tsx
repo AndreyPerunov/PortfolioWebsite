@@ -1,5 +1,5 @@
 "use client"
-import styles from "./modules/Skills.module.scss"
+import styles from "./modules/SkillsNotFound.module.scss"
 import { FC, MutableRefObject, ReactNode, useEffect, useRef } from "react"
 
 type skillProps = {
