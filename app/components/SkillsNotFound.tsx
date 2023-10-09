@@ -80,7 +80,7 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
       // Set that evereting is found
       setTimeout(() => {
         setAllFound(true)
-      }, 4000)
+      }, 3000)
     }
   }, [foundSkillsCount])
 

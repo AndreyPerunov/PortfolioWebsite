@@ -147,15 +147,15 @@
     height: 100px;
   }
   50% {
-    transform: translate(-50%, -50%) scale(10);
+    transform: translate(-50%, -50%) scale(2);
     z-index: 30;
-    width: 300px;
-    height: 300px;
+    width: 1000px;
+    height: 1000px;
   }
   100% {
-    transform: translate(-50%, -50%) scale(10);
+    transform: translate(-50%, -50%) scale(2);
     z-index: 30;
-    width: 300px;
-    height: 300px;
+    width: 1000px;
+    height: 1000px;
   }
 }
