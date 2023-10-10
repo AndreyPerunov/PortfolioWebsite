@@ -29,19 +29,16 @@ const Projects: FC = () => {
   const backgroundSphere2 = useRef<HTMLDivElement | null>()
   const backgroundSphere3 = useRef<HTMLDivElement | null>()
   const backgroundSphere4 = useRef<HTMLDivElement | null>()
-  const backgroundSphere5 = useRef<HTMLDivElement | null>()
   useEffect(() => {
     let topInitial1 = backgroundSphere1.current.offsetTop + 200
     let topInitial2 = backgroundSphere2.current.offsetTop + 200
     let topInitial3 = backgroundSphere3.current.offsetTop + 200
     let topInitial4 = backgroundSphere4.current.offsetTop + 200
-    let topInitial5 = backgroundSphere5.current.offsetTop + 200
     const scrollHandler = e => {
       backgroundSphere1.current.style.top = `${topInitial1 - window.scrollY * 0.4}px`
       backgroundSphere2.current.style.top = `${topInitial2 - window.scrollY * 0.4}px`
       backgroundSphere3.current.style.top = `${topInitial3 - window.scrollY * 0.4}px`
       backgroundSphere4.current.style.top = `${topInitial4 - window.scrollY * 0.4}px`
-      backgroundSphere5.current.style.top = `${topInitial5 - window.scrollY * 0.4}px`
     }
     window.addEventListener("scroll", scrollHandler)
     return () => {
@@ -54,7 +51,7 @@ const Projects: FC = () => {
       <div ref={backgroundSphere2} className={styles.projects__backgroundSphere}></div>
       <div ref={backgroundSphere3} className={styles.projects__backgroundSphere}></div>
       <div ref={backgroundSphere4} className={styles.projects__backgroundSphere}></div>
-      <div ref={backgroundSphere5} className={styles.projects__backgroundSphere}></div>
+
       <h1 className={styles.projects__title}>Recent Projects</h1>
       <Project
         title="Complex React App"
