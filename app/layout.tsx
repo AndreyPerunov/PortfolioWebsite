@@ -1,6 +1,9 @@
 // Styles
 import "./styles/main.scss"
 
+// Components
+import Footer from "./components/Footer"
+
 // Fontawesome
 import { config } from "@fortawesome/fontawesome-svg-core"
 import "@fortawesome/fontawesome-svg-core/styles.css"
@@ -30,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body suppressHydrationWarning={true} className={allerta.className}>
         {children}
+        <Footer />
       </body>
     </html>
   )
