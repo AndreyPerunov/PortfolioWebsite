@@ -113,7 +113,7 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
 
   return (
     <>
-      <div className={styles.fade}></div>
+      <div className={styles.fadeup}></div>
       <div ref={skills} className={styles.skills}>
         <div ref={cursor} className={styles.skills__cursor}></div>
         {skillsArray.map((item, index) => {
@@ -138,6 +138,7 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
           </p>
         </div>
       </div>
+      <div className={styles.fadedown}></div>
     </>
   )
 }
