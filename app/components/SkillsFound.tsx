@@ -51,8 +51,8 @@ const SkillsFound: FC = () => {
     <div className={styles.skills}>
       <h1>What I can do</h1>
       <div className={styles.skills__grid}>
-        {skills.map(skill => (
-          <div className={styles.skill}>
+        {skills.map((skill, index) => (
+          <div key={index} className={styles.skill}>
             <div className={styles.skill__imgContainer}>
               <Image className={styles.skill__imgContainer__image} alt={skill.name} src={skill.src} />
             </div>
