@@ -109,7 +109,7 @@ const Projects: FC = () => {
           { name: "Express.js", src: ExpressJSIcon }
         ]}
         gitHubLink="https://github.com/AndreyPerunov/complex-app"
-        websiteLink=""
+        websiteLink="https://complex-app.onrender.com/"
       />
     </div>
   )
