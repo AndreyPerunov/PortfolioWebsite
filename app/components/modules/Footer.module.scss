@@ -3,9 +3,17 @@
 .footer {
   margin: 1em;
   margin-top: 100px;
-  height: 15vh;
+  min-height: 15vh;
   border: dotted 5px $base-color;
   display: grid;
   align-content: center;
   justify-items: center;
+
+  &__link {
+    color: $base-color;
+  }
+
+  & > p {
+    margin-bottom: 1em;
+  }
 }
