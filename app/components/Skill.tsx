@@ -62,7 +62,7 @@ const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }
     if (skillX.current > window.innerWidth - 80 || skillX.current < 10) {
       vector.x *= -1
     }
-    if (skillY.current > window.innerHeight - 10 || skillY.current < 10) {
+    if (skillY.current > window.innerHeight - 50 || skillY.current < 10) {
       vector.y *= -1
     }
 
