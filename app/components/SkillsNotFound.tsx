@@ -39,7 +39,6 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
 
     // Apply movement until it is in the same position as CURSOR
     if (Math.abs(delayedCursorX.current - cursorX.current) > 0.3 || Math.abs(delayedCursorY.current - cursorY.current) > 0.3) {
-      console.log(Math.abs(delayedCursorX.current - cursorX.current))
       cursor.current.style.top = delayedCursorY.current + "px"
       cursor.current.style.left = delayedCursorX.current + "px"
     }
