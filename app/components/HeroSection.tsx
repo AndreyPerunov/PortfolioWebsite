@@ -22,7 +22,7 @@ const HeroSection: FC = () => {
   const requestAnimation = useRef(null)
 
   // Speed of delayedCursor
-  const delay = 40
+  const delay = 20
 
   // Position of cursor
   const cursorX = useRef(0)
