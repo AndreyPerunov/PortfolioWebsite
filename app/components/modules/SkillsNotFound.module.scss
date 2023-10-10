@@ -55,8 +55,8 @@
     left: 50%;
     transform: translate(-50%, -50%) scale(0.01);
     filter: blur(50px);
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     opacity: 0;
     &Visible {
       transform: translate(-50%, -50%) scale(1);
@@ -154,13 +154,13 @@
   50% {
     transform: translate(-50%, -50%) scale(2);
     z-index: 30;
-    width: 1000px;
-    height: 1000px;
+    width: 2000px;
+    height: 2000px;
   }
   100% {
     transform: translate(-50%, -50%) scale(2);
     z-index: 30;
-    width: 1000px;
-    height: 1000px;
+    width: 2000px;
+    height: 2000px;
   }
 }
