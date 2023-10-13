@@ -1,6 +1,7 @@
 "use client"
 import { FC } from "react"
 import { useEffect, useRef } from "react"
+import { isMobile } from "react-device-detect"
 
 // Images
 import ComplexReactApp from "../../public/Complex React App.png"
@@ -25,26 +26,32 @@ import styles from "./modules/Projects.module.scss"
 import Project from "./Project"
 
 const Projects: FC = () => {
-  const backgroundSphere1 = useRef<HTMLDivElement | null>()
-  const backgroundSphere2 = useRef<HTMLDivElement | null>()
-  const backgroundSphere3 = useRef<HTMLDivElement | null>()
-  const backgroundSphere4 = useRef<HTMLDivElement | null>()
-  useEffect(() => {
-    let topInitial1 = backgroundSphere1.current.offsetTop + 200
-    let topInitial2 = backgroundSphere2.current.offsetTop + 200
-    let topInitial3 = backgroundSphere3.current.offsetTop + 200
-    let topInitial4 = backgroundSphere4.current.offsetTop + 200
-    const scrollHandler = e => {
-      backgroundSphere1.current.style.top = `${topInitial1 - window.scrollY * 0.4}px`
-      backgroundSphere2.current.style.top = `${topInitial2 - window.scrollY * 0.4}px`
-      backgroundSphere3.current.style.top = `${topInitial3 - window.scrollY * 0.4}px`
-      backgroundSphere4.current.style.top = `${topInitial4 - window.scrollY * 0.4}px`
-    }
-    window.addEventListener("scroll", scrollHandler)
-    return () => {
-      window.removeEventListener("scroll", scrollHandler)
-    }
-  }, [])
+  let backgroundSphere1
+  let backgroundSphere2
+  let backgroundSphere3
+  let backgroundSphere4
+  if (!isMobile) {
+    backgroundSphere1 = useRef<HTMLDivElement | null>()
+    backgroundSphere2 = useRef<HTMLDivElement | null>()
+    backgroundSphere3 = useRef<HTMLDivElement | null>()
+    backgroundSphere4 = useRef<HTMLDivElement | null>()
+    useEffect(() => {
+      let topInitial1 = backgroundSphere1.current.offsetTop + 200
+      let topInitial2 = backgroundSphere2.current.offsetTop + 200
+      let topInitial3 = backgroundSphere3.current.offsetTop + 200
+      let topInitial4 = backgroundSphere4.current.offsetTop + 200
+      const scrollHandler = e => {
+        backgroundSphere1.current.style.top = `${topInitial1 - window.scrollY * 0.4}px`
+        backgroundSphere2.current.style.top = `${topInitial2 - window.scrollY * 0.4}px`
+        backgroundSphere3.current.style.top = `${topInitial3 - window.scrollY * 0.4}px`
+        backgroundSphere4.current.style.top = `${topInitial4 - window.scrollY * 0.4}px`
+      }
+      window.addEventListener("scroll", scrollHandler)
+      return () => {
+        window.removeEventListener("scroll", scrollHandler)
+      }
+    }, [])
+  }
   return (
     <div className={styles.projects} id="projects">
       <div ref={backgroundSphere1} className={styles.projects__backgroundSphere}></div>
