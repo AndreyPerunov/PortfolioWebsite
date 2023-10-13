@@ -48,7 +48,7 @@ const Project: FC<projectProps> = ({ title, image, body, stack, gitHubLink, webs
   return (
     <div ref={projectRef} className={styles.project + ` ${isRevealed ? styles.projectReveal : ""}`}>
       <Image className={styles.project__image} alt={title} src={image} />
-      <div className={styles.project_info}>
+      <div className={styles.project__info}>
         <h1 className={styles.project__title}>{title}</h1>
         <p className={styles.project__body}>{body}</p>
         <p className={styles.project__techStackColon}>Tech stack:</p>
