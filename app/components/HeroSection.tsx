@@ -116,7 +116,7 @@ const HeroSection: FC = () => {
       <p className={styles.hero__question}>Have an offer?</p>
 
       <div style={{ textAlign: "center" }}>
-        <Button href="#">Let's Talk!</Button>
+        <Button href="mailto:andrey.perunov1@gmail.com">Let's Talk!</Button>
       </div>
 
       <ArrowDown />
