@@ -114,7 +114,7 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
   return (
     <>
       <div className={styles.fadeup}></div>
-      <div ref={skills} className={styles.skills}>
+      <div ref={skills} className={styles.skills} id="skills">
         <div ref={cursor} className={styles.skills__cursor}></div>
         {skillsArray.map((item, index) => {
           // Setting up random vector (skill move direction)

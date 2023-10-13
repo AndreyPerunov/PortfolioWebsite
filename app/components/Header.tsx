@@ -16,16 +16,10 @@ const Header: FC = () => {
       </div>
       <ul>
         <li>
-          <a href="">Work</a>
+          <a href="#projects">Projects</a>
         </li>
         <li>
-          <a href="">About</a>
-        </li>
-        <li>
-          <a href="">CV</a>
-        </li>
-        <li>
-          <a href="">Contact</a>
+          <a href="#skills">Skills</a>
         </li>
       </ul>
     </nav>

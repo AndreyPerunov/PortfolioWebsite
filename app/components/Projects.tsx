@@ -46,7 +46,7 @@ const Projects: FC = () => {
     }
   }, [])
   return (
-    <div className={styles.projects}>
+    <div className={styles.projects} id="projects">
       <div ref={backgroundSphere1} className={styles.projects__backgroundSphere}></div>
       <div ref={backgroundSphere2} className={styles.projects__backgroundSphere}></div>
       <div ref={backgroundSphere3} className={styles.projects__backgroundSphere}></div>
