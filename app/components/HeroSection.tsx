@@ -113,10 +113,15 @@ const HeroSection: FC = () => {
         <h1 className={styles.hero__banner__name + " " + allerta_Stencil.className}>Hey, I'm Andrey</h1>
         <h1 className={styles.hero__banner__profession + " " + allerta_Stencil.className}>Full-stack developer</h1>
       </div>
-      <p className={styles.hero__question}>Have an offer?</p>
+      {/* <p className={styles.hero__question}>Have an offer?</p>
 
       <div style={{ textAlign: "center" }}>
         <Button href="mailto:andrey.perunov1@gmail.com">Let's Talk!</Button>
+      </div> */}
+      <p className={styles.hero__question}>What can I do?</p>
+
+      <div style={{ textAlign: "center" }}>
+        <Button href="#skills">See My Skills!</Button>
       </div>
 
       <ArrowDown />
