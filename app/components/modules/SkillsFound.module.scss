@@ -33,6 +33,7 @@
     &__image {
       height: 50px;
       width: auto;
+      user-select: none;
       transition: height 0.2s ease-in-out, width 0.2s ease-in-out;
     }
   }
