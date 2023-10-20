@@ -8,6 +8,7 @@ import ComplexReactApp from "../../public/Complex React App.png"
 import TravelSite from "../../public/Travel Site.png"
 import VideoPlayer from "../../public/Video Player.png"
 import ComplexApp from "../../public/Complex App.png"
+import ChatRoom from "../../public/Chat Room.png"
 // Icons
 import WebPackIcon from "../../public/Web Pack.svg"
 import ReactIcon from "../../public/React.svg"
@@ -20,6 +21,8 @@ import ExpressJSIcon from "../../public/Expressjs.png"
 import PostCSSIcon from "../../public/PostCSS.png"
 import LodashJSIcon from "../../public/LodashJS.png"
 import SassIcon from "../../public/Sass.svg"
+import ViteIcon from "../../public/vite.png"
+import SocketIoIcon from "../../public/socket-io.svg"
 // Styles
 import styles from "./modules/Projects.module.scss"
 // Components
@@ -71,6 +74,7 @@ const Projects: FC = () => {
           { name: "Immer", src: ImmerIcon },
           { name: "MongoDB", src: MongoDBIcon },
           { name: "Axios", src: AxiosIcon },
+          { name: "Socket.io", src: SocketIoIcon },
           { name: "JWT", src: JWTIcon },
           { name: "Express.js", src: ExpressJSIcon }
         ]}
@@ -112,11 +116,28 @@ const Projects: FC = () => {
           { name: "Git", src: GitIcon },
           { name: "MongoDB", src: MongoDBIcon },
           { name: "Axios", src: AxiosIcon },
+          { name: "Socket.io", src: SocketIoIcon },
           { name: "JWT", src: JWTIcon },
           { name: "Express.js", src: ExpressJSIcon }
         ]}
         gitHubLink="https://github.com/AndreyPerunov/complex-app"
         websiteLink="https://complex-app.onrender.com/"
+      />
+      <Project
+        title="Chat Room App"
+        image={ChatRoom}
+        body="Chat Application with rooms. Build with React.js and Node.js. Backend (socket.io) oriented website."
+        stack={[
+          { name: "Vite", src: ViteIcon },
+          { name: "React", src: ReactIcon },
+          { name: "Socket.io", src: SocketIoIcon },
+          { name: "Sass", src: SassIcon },
+          { name: "Git", src: GitIcon },
+          { name: "Axios", src: AxiosIcon },
+          { name: "Express.js", src: ExpressJSIcon }
+        ]}
+        gitHubLink="https://github.com/AndreyPerunov/ChatRoom-frontend"
+        websiteLink="https://chat-room-frontend-ten.vercel.app"
       />
     </div>
   )
