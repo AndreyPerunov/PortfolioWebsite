@@ -1,0 +1,42 @@
+@import "variables";
+
+.contact {
+  background-color: #ffffff80;
+  border-radius: 30px;
+  padding: 25px;
+  margin-top: 50px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  &__info {
+    flex: 2;
+    border-right: 2px solid $base-color;
+
+    &__icon {
+      font-size: 2.5rem;
+      color: $base-color;
+      margin-bottom: 0.5rem;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: #666;
+      }
+    }
+  }
+}
