@@ -46,7 +46,7 @@
 
   &__image {
     width: 100%;
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       width: 40%;
     }
     height: auto;
@@ -59,7 +59,7 @@
 
   &__info {
     width: 100%;
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       width: 60%;
     }
   }
