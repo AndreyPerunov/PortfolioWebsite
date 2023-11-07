@@ -24,7 +24,7 @@ const CopyText: FC<copyTextProps> = ({ content, delay = 3000, toClipboard = cont
       <p onClick={copyText} style={{ cursor: "pointer" }} data-tooltip-id={content} data-tooltip-content={copyed ? "Copyed" : "Click to Copy"} data-tooltip-delay-show={100}>
         {content}
       </p>
-      <Tooltip id={content} style={copyed ? { backgroundColor: "#ffde59", color: "black", borderRadius: "25px" } : {}} />
+      <Tooltip id={content} place="right-end" style={copyed ? { backgroundColor: "#ffde59", color: "black" } : {}} />
     </>
   )
 }
