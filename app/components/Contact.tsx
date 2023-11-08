@@ -23,7 +23,9 @@ const Contact = () => {
           <CopyText content="andrey.perunov1@gmail.com" />
         </div>
       </div>
-      <ContactForm />
+      <div className={styles.contact__form}>
+        <ContactForm />
+      </div>
     </div>
   )
 }
