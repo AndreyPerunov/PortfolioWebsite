@@ -73,6 +73,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     width: 100%;
+    min-width: 100px;
     @include breakpoint(small) {
       width: auto;
     }
