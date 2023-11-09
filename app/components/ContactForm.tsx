@@ -3,6 +3,7 @@ import styles from "./modules/ContactForm.module.scss"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useEffect, useState } from "react"
 import Axios from "axios"
+import { BsFillSendCheckFill } from "react-icons/bs"
 
 type Inputs = {
   name: string
@@ -19,7 +20,7 @@ const ContactForm = () => {
   const [loading, setLoading] = useState(false)
   const spinnerChars = ["|", "/", "─", "\\"]
   const [spinnerChar, setSpinnerChar] = useState(spinnerChars[0])
-  const [response, setResponse] = useState({ success: true, message: "" })
+  const [response, setResponse] = useState({ success: false, message: "" })
 
   useEffect(() => {
     if (loading) {
@@ -94,7 +95,7 @@ const ContactForm = () => {
           })}
         />
       </div>
-      <input type="submit" value={loading ? spinnerChar : "Send"} className={styles.form__submit + " " + (loading ? styles.form__submitLoading : "")} />
+      {response.success ? <BsFillSendCheckFill className={styles.form__success} /> : <input type="submit" value={loading ? spinnerChar : "Send"} className={styles.form__submit + " " + (loading ? styles.form__submitLoading : "")} />}
       <span className={styles.form__response + " " + (response.success ? "" : styles.form__responseFail)}>{response.message}</span>
     </form>
   )
