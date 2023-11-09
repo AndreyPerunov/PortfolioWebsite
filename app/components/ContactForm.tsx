@@ -1,6 +1,8 @@
 "use client"
 import styles from "./modules/ContactForm.module.scss"
 import { useForm, SubmitHandler } from "react-hook-form"
+import { useEffect, useState } from "react"
+import Axios from "axios"
 
 type Inputs = {
   name: string
@@ -14,16 +16,37 @@ const ContactForm = () => {
     handleSubmit,
     formState: { errors }
   } = useForm<Inputs>()
+  const [loading, setLoading] = useState(false)
+  const spinnerChars = ["|", "/", "─", "\\"]
+  const [spinnerChar, setSpinnerChar] = useState(spinnerChars[0])
+  const [response, setResponse] = useState({ success: true, message: "" })
 
-  const onSubmit: SubmitHandler<Inputs> = ({ name, email, message }) => {
-    console.log({ name, email, message })
+  useEffect(() => {
+    if (loading) {
+      let i = 0
+      const interval = setInterval(() => {
+        setSpinnerChar(spinnerChars[i++ % spinnerChars.length])
+      }, 100)
+      return () => clearInterval(interval)
+    }
+  }, [loading])
+
+  const onSubmit: SubmitHandler<Inputs> = async data => {
+    setLoading(true)
+    try {
+      const res = await Axios.post("/api/message", data)
+      setResponse(res.data)
+    } catch (error) {
+      console.error(error)
+      setResponse({ success: false, message: "Something went wrong. Please try again later." })
+    }
+    setLoading(false)
   }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <h1>Get in touch</h1>
       <p className={styles.form__text}>If you have any work for me, you can send me message from here. It's my pleasure to help you.</p>
-
       <label htmlFor="name">Your Name:</label>
       <div className={styles.form__container}>
         {errors.name !== undefined && (
@@ -40,7 +63,6 @@ const ContactForm = () => {
           })}
         />
       </div>
-
       <label htmlFor="email">Your Email:</label>
       <div className={styles.form__container}>
         {errors.email !== undefined && (
@@ -72,8 +94,8 @@ const ContactForm = () => {
           })}
         />
       </div>
-
-      <input type="submit" value="Send" />
+      <input type="submit" value={loading ? spinnerChar : "Send"} className={styles.form__submit + " " + (loading ? styles.form__submitLoading : "")} />
+      <span className={styles.form__response + " " + (response.success ? "" : styles.form__responseFail)}>{response.message}</span>
     </form>
   )
 }
