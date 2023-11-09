@@ -4,7 +4,7 @@ import { HiOutlineMail, HiPhone, HiLocationMarker } from "react-icons/hi"
 
 const Contact = () => {
   return (
-    <div className={styles.contact}>
+    <div className={styles.contact} id="contacts">
       <div className={styles.contact__info}>
         <div>
           <HiLocationMarker className={styles.contact__info__icon} />
