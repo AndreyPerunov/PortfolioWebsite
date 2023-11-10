@@ -2,6 +2,7 @@ import styles from "./modules/Footer.module.scss"
 import { FC } from "react"
 
 const Footer: FC = () => {
+  return <></>
   return (
     <div className={styles.footer}>
       <p>
