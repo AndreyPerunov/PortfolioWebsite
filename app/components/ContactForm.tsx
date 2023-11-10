@@ -17,7 +17,8 @@ const ContactForm = () => {
     handleSubmit,
     formState: { errors }
   } = useForm<Inputs>()
-  const [loading, setLoading] = useState(false)
+  // TODO: remove temp, set loading to false
+  const [loading, setLoading] = useState(true)
   const spinnerChars = ["|", "/", "─", "\\"]
   const [spinnerChar, setSpinnerChar] = useState(spinnerChars[0])
   const [response, setResponse] = useState({ success: false, message: "" })
@@ -27,6 +28,9 @@ const ContactForm = () => {
       let i = 0
       const interval = setInterval(() => {
         setSpinnerChar(spinnerChars[i++ % spinnerChars.length])
+        if (i >= 100) {
+          i = 0
+        }
       }, 100)
       return () => clearInterval(interval)
     }
@@ -43,6 +47,19 @@ const ContactForm = () => {
     }
     setLoading(false)
   }
+
+  // temp
+  return (
+    <div className={styles.form}>
+      <h1>Get in touch</h1>
+      <p className={styles.form__text}>If you have any work for me, you can send me message from here. It's my pleasure to help you.</p>
+      <div className={styles.form__temp}>
+        The contact form is work in progress :(
+        <br />
+        <p style={{ textAlign: "center" }}>{spinnerChar}</p>
+      </div>
+    </div>
+  )
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
