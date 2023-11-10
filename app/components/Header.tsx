@@ -21,6 +21,9 @@ const Header: FC = () => {
         <li>
           <a href="#skills">Skills</a>
         </li>
+        <li>
+          <a href="#contacts">Contacts</a>
+        </li>
       </ul>
     </nav>
   )

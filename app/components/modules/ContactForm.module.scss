@@ -1,0 +1,120 @@
+@import "variables";
+@import "mixins";
+
+.form {
+  margin: 0 0;
+  padding: 0.5rem;
+
+  @include breakpoint(small) {
+    padding: 1rem;
+  }
+
+  @include breakpoint(medium) {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__text {
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  &__container {
+    position: relative;
+    &__error {
+      animation: reveal 0.3s ease-in-out;
+      background-color: #ff6565;
+      height: 40px;
+      padding: 5px;
+      top: -30px;
+      border-radius: 5px;
+      color: #fff;
+      position: absolute;
+      width: 100%;
+      display: block;
+      margin: 0;
+      z-index: 0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      z-index: 1;
+      position: relative;
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 150px;
+      max-height: 400px;
+      resize: vertical;
+    }
+  }
+
+  &__submit {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: $base-color;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 130px;
+
+    &Loading {
+      background-color: rgba($base-color, 0.5);
+    }
+
+    &:hover {
+      background-color: rgba($base-color, 0.5);
+    }
+  }
+  &__response {
+    padding-left: 1em;
+    color: #03b65f;
+    font-size: 0.75em;
+    transform: translateY(-1.25em);
+    display: inline-block;
+    &Fail {
+      transform: translateY(0);
+      color: #ff6565;
+    }
+  }
+
+  &__success {
+    font-size: 2.5rem;
+    color: #03b65f;
+  }
+
+  &__temp {
+    width: 100%;
+    height: 50vh;
+    background-color: rgba($base-color, 0.5);
+    border-radius: 25px;
+    padding: 2em;
+    color: #666;
+    font-size: 1.5em;
+  }
+}
+
+@keyframes reveal {
+  0% {
+    top: 0px;
+  }
+  100% {
+    top: -30px;
+  }
+}
