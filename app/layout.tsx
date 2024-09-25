@@ -2,7 +2,6 @@
 import "./styles/main.scss"
 
 // Components
-import Footer from "./components/Footer"
 import Alert from "./components/Alert"
 
 // Fontawesome
