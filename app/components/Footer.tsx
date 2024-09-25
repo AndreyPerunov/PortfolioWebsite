@@ -3,8 +3,7 @@ import { FC } from "react"
 import { AiFillInstagram, AiFillGithub, AiFillLinkedin } from "react-icons/ai"
 
 const Footer: FC = () => {
-  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
+  return <></>
   return (
     <div className={styles.footer}>
       <div className={styles.footer__r2}>
