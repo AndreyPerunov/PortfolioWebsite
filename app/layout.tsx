@@ -2,7 +2,6 @@
 import "./styles/main.scss"
 
 // Components
-import Footer from "./components/Footer"
 import Alert from "./components/Alert"
 
 // Fontawesome
@@ -49,7 +48,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body suppressHydrationWarning={true} className={allerta.className}>
         {children}
-        <Footer />
       </body>
     </html>
   )
