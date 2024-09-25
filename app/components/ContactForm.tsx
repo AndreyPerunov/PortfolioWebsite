@@ -2,7 +2,6 @@
 import styles from "./modules/ContactForm.module.scss"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useEffect, useState } from "react"
-import Axios from "axios"
 import { BsFillSendCheckFill } from "react-icons/bs"
 
 type Inputs = {
@@ -38,13 +37,6 @@ const ContactForm = () => {
 
   const onSubmit: SubmitHandler<Inputs> = async data => {
     setLoading(true)
-    try {
-      const res = await Axios.post("/api/message", data)
-      setResponse(res.data)
-    } catch (error) {
-      console.error(error)
-      setResponse({ success: false, message: "Something went wrong. Please try again later." })
-    }
     setLoading(false)
   }
 
