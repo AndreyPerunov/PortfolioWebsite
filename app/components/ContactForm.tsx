@@ -1,8 +1,9 @@
 "use client"
 import styles from "./modules/ContactForm.module.scss"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useTransition } from "react"
 import { BsFillSendCheckFill } from "react-icons/bs"
+import { onFormSubmit } from "../../actions/contact-form"
 
 type Inputs = {
   name: string
@@ -16,14 +17,13 @@ const ContactForm = () => {
     handleSubmit,
     formState: { errors }
   } = useForm<Inputs>()
-  // TODO: remove temp, set loading to false
-  const [loading, setLoading] = useState(true)
   const spinnerChars = ["|", "/", "─", "\\"]
   const [spinnerChar, setSpinnerChar] = useState(spinnerChars[0])
   const [response, setResponse] = useState({ success: false, message: "" })
+  const [isPending, startTransition] = useTransition()
 
   useEffect(() => {
-    if (loading) {
+    if (isPending) {
       let i = 0
       const interval = setInterval(() => {
         setSpinnerChar(spinnerChars[i++ % spinnerChars.length])
@@ -33,25 +33,15 @@ const ContactForm = () => {
       }, 100)
       return () => clearInterval(interval)
     }
-  }, [loading])
+  }, [isPending])
 
-  const onSubmit: SubmitHandler<Inputs> = async data => {
-    setLoading(true)
-    setLoading(false)
+  const onSubmit: SubmitHandler<Inputs> = data => {
+    startTransition(() => {
+      onFormSubmit(data.name, data.email, data.message).then(data => {
+        setResponse({ success: data.success !== undefined, message: data.success || data.error })
+      })
+    })
   }
-
-  // temp
-  return (
-    <div className={styles.form}>
-      <h1>Get in touch</h1>
-      <p className={styles.form__text}>If you have any work for me, you can send me message from here. It's my pleasure to help you.</p>
-      <div className={styles.form__temp}>
-        The contact form is work in progress :(
-        <br />
-        <p style={{ textAlign: "center" }}>{spinnerChar}</p>
-      </div>
-    </div>
-  )
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -99,12 +89,12 @@ const ContactForm = () => {
           id="message"
           {...register("message", {
             required: { value: true, message: "Message is required." },
-            maxLength: { value: 1000, message: "Name can not exceed 1000 characters." },
-            minLength: { value: 2, message: "Name must be at least 2 character long." }
+            maxLength: { value: 1000, message: "Message can not exceed 1000 characters." },
+            minLength: { value: 2, message: "Message must be at least 2 character long." }
           })}
         />
       </div>
-      {response.success ? <BsFillSendCheckFill className={styles.form__success} /> : <input type="submit" value={loading ? spinnerChar : "Send"} className={styles.form__submit + " " + (loading ? styles.form__submitLoading : "")} />}
+      {response.success ? <BsFillSendCheckFill className={styles.form__success} /> : <input type="submit" value={isPending ? spinnerChar : "Send"} className={styles.form__submit + " " + (isPending ? styles.form__submitLoading : "")} />}
       <span className={styles.form__response + " " + (response.success ? "" : styles.form__responseFail)}>{response.message}</span>
     </form>
   )
