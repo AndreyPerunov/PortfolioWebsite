@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": "ProfilePage",
     name: "Andrey Perunov | Portfolio Website",
     description: "My name is Andrey Perunov, I am a professional web developer. This is portfolio website. Here you can find my projects, skills and other information about me",
-    dateCreated: "2021-09-01",
+    dateCreated: new Date("2023-04-30").toISOString(),
     dateModified: new Date().toISOString(),
     url: BASE_URL,
     mainEntity: {
@@ -97,7 +97,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         name: "TSI Schedule Scraper",
         offers: {
           "@type": "Offer",
-          price: "0"
+          price: "0",
+          priceCurrency: "EUR"
         },
         description: "This application automates the process of transferring the schedule from the Transport and Telecommunication Institute (TSI) website to Google Calendar by following an ETL process. The tool performs daily web scraping of the TSI website to extract schedule data, processes and prepares the data, and finally allows both students and lecturers to load their updated schedules into Google Calendar.",
         applicationCategory: "UtilitiesApplication",
@@ -112,7 +113,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         name: "Complex React App",
         offers: {
           "@type": "Offer",
-          price: "0"
+          price: "0",
+          priceCurrency: "EUR"
         },
         description: "Complex Social media website written in React.js. Frontend oriented website.",
         applicationCategory: "SocialNetworkingApplication",
@@ -127,7 +129,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         name: "Travel Site",
         offers: {
           "@type": "Offer",
-          price: "0"
+          price: "0",
+          priceCurrency: "EUR"
         },
         description: "Travel Site website is oriented to test my html, css and optimization skills.",
         applicationCategory: "TravelApplication",
@@ -142,7 +145,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         name: "Video Player",
         offers: {
           "@type": "Offer",
-          price: "0"
+          price: "0",
+          priceCurrency: "EUR"
         },
         description: "This player is a copy of an YouTube video player. With a responsive layout. Made in React.js.",
         applicationCategory: "MultimediaApplication",
@@ -157,7 +161,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         name: "Complex App",
         offers: {
           "@type": "Offer",
-          price: "0"
+          price: "0",
+          priceCurrency: "EUR"
         },
         description: "Complex Social media website. Written in vanilla JavaScript and Node.js. Project have MVC architecture. Backend and frontend oriented website.",
         applicationCategory: "SocialNetworkingApplication",
@@ -172,7 +177,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         name: "Chat Room App",
         offers: {
           "@type": "Offer",
-          price: "0"
+          price: "0",
+          priceCurrency: "EUR"
         },
         description: "Chat Application with rooms. Build with React.js and Node.js. Backend (socket.io) oriented website.",
         applicationCategory: "CommunicationApplication",
