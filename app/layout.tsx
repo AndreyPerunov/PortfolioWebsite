@@ -42,18 +42,9 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       url: baseUrl,
-      images: [
-        {
-          url: "/public/head-shot.jpg",
-          secureUrl: "/public/head-shot.jpg",
-          alt: "Preview image of Andrey Perunov",
-          width: 525,
-          height: 484
-        }
-      ],
       type: "website",
       locale: "en_US",
-      siteName: "Andrey Perunov"
+      siteName: "Andrey Perunov | Portfolio Website"
     },
     robots: {
       index: true,
