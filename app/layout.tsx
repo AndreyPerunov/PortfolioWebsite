@@ -34,6 +34,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     keywords,
     themeColor: "#ffffff",
+    alternates: {
+      canonical: baseUrl
+    },
     icons: {
       icon: "/favicon.ico"
     },
