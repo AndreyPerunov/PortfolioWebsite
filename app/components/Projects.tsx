@@ -10,6 +10,7 @@ import VideoPlayer from "../../public/Video Player.png"
 import ComplexApp from "../../public/Complex App.png"
 import ChatRoom from "../../public/Chat Room.png"
 import TSIScheduleScraper from "../../public/TSI Schedule Scraper.png"
+import LearnKana from "../../public/Learn Kana.png"
 // Icons
 import WebPackIcon from "../../public/Web Pack.svg"
 import ReactIcon from "../../public/React.svg"
@@ -36,6 +37,7 @@ import NodejsIcon from "../../public/node.png"
 import ReduxToolkitIcon from "../../public/js_redux-icon.svg"
 import TailwindCSSIcon from "../../public/tailwindcss-icon.svg"
 import DockerIcon from "../../public/docker-icon.svg"
+import ZodIcon from "../../public/zod-logo-glow.webp"
 
 // Styles
 import styles from "./modules/Projects.module.scss"
@@ -102,6 +104,25 @@ const Projects: FC = () => {
         ]}
         gitHubLink="https://github.com/AndreyPerunov/TSI-Schedule-Scrapping-Backend-v2"
         websiteLink="https://www.linkedin.com/feed/update/urn:li:activity:7215728366660812800/"
+      />
+      <Project
+        title="Learn Kana"
+        image={LearnKana}
+        body="Tool for learning Japanese Hiragana and Katakana alphabets. Application uses spaced repetition system (SRS) to help users memorize characters more effectively. Users type characters using romaji input method. Application tracks user progress and adjusts the frequency of character based on performance."
+        stack={[
+          { name: "React", src: ReactIcon },
+          { name: "Next.js", src: NextjsIcon },
+          { name: "Git", src: GitIcon },
+          { name: "Prisma", src: PrismaIcon },
+          { name: "PostgreSQL", src: PostgreSQLIcon },
+          { name: "TypeScript", src: TypeScriptIcon },
+          { name: "Node.js", src: NodejsIcon },
+          { name: "Redux Toolkit", src: ReduxToolkitIcon },
+          { name: "TailwindCSS", src: TailwindCSSIcon },
+          { name: "Zod", src: ZodIcon }
+        ]}
+        gitHubLink="https://github.com/AndreyPerunov/kana"
+        websiteLink="https://kana-five.vercel.app/"
       />
       <Project
         title="Complex React App"
