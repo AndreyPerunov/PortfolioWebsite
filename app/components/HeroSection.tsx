@@ -13,13 +13,13 @@ import { Allerta_Stencil } from "next/font/google"
 const allerta_Stencil = Allerta_Stencil({ weight: "400", subsets: ["latin"] })
 
 const HeroSection: FC = () => {
-  const picture1 = useRef<HTMLImageElement>()
-  const picture2 = useRef<HTMLImageElement>()
-  const picture3 = useRef<HTMLImageElement>()
-  const picture4 = useRef<HTMLImageElement>()
-  const picture5 = useRef<HTMLImageElement>()
-  const picture6 = useRef<HTMLImageElement>()
-  const requestAnimation = useRef(null)
+  const picture1 = useRef<HTMLImageElement | null>(null)
+  const picture2 = useRef<HTMLImageElement | null>(null)
+  const picture3 = useRef<HTMLImageElement | null>(null)
+  const picture4 = useRef<HTMLImageElement | null>(null)
+  const picture5 = useRef<HTMLImageElement | null>(null)
+  const picture6 = useRef<HTMLImageElement | null>(null)
+  const requestAnimation = useRef<number | null>(null)
 
   // Speed of delayedCursor
   const delay = 20
@@ -33,6 +33,8 @@ const HeroSection: FC = () => {
   const delayedPointY = useRef(0)
 
   const animate = () => {
+    if (!picture6.current) return
+
     const myPictureRect = picture6.current.getBoundingClientRect()
     if (myPictureRect.bottom > 0) {
       // Move delayedPoint a bit closer to CURSOR
@@ -40,7 +42,14 @@ const HeroSection: FC = () => {
       delayedPointY.current += (cursorY.current - delayedPointY.current) / delay
 
       // Apply movement until it is in the same position as CURSOR
-      if (Math.abs(delayedPointX.current - cursorX.current) > 0.3 || Math.abs(delayedPointY.current - cursorY.current) > 0.3) {
+      if (
+        (Math.abs(delayedPointX.current - cursorX.current) > 0.3 || Math.abs(delayedPointY.current - cursorY.current) > 0.3) &&
+        picture1.current &&
+        picture2.current &&
+        picture3.current &&
+        picture4.current &&
+        picture5.current
+      ) {
         const centerX = myPictureRect.width / 2 + myPictureRect.x
         const centerY = myPictureRect.height / 2 + myPictureRect.y
         const howCloseX = (delayedPointX.current - centerX) / 500
@@ -71,12 +80,14 @@ const HeroSection: FC = () => {
   }
 
   // Tracking CURSOR position
-  const mouseMoveHandler = useCallback(e => {
+  const mouseMoveHandler = useCallback((e: MouseEvent) => {
     cursorX.current = e.clientX
     cursorY.current = e.clientY
   }, [])
 
   useEffect(() => {
+    if (!picture6.current) return
+
     // Set initial position of corsor and delayedCursor
     const myPictureRect = picture6.current.getBoundingClientRect()
     cursorX.current = myPictureRect.width / 2 + myPictureRect.x
@@ -91,7 +102,7 @@ const HeroSection: FC = () => {
     }
     return () => {
       window.removeEventListener("mousemove", mouseMoveHandler)
-      cancelAnimationFrame(requestAnimation.current)
+      if (requestAnimation.current) cancelAnimationFrame(requestAnimation.current)
     }
   }, [])
 

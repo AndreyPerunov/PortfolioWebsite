@@ -22,7 +22,7 @@ type skillProps = {
 
 const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }) => {
   const skill = useRef<HTMLParagraphElement>(null)
-  const requestAnimation = useRef(null)
+  const requestAnimation = useRef<number | null>(null)
 
   // Coords of the SKILL. Used to move it.
   const skillX = useRef(0)
@@ -33,6 +33,8 @@ const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }
   const skillYCenter = useRef(0)
 
   const animate = () => {
+    if (!skill.current) return
+
     // Cursor Hover
     const findingRadius = 120
 
@@ -54,7 +56,7 @@ const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }
       setFoundSkillsCount(prev => prev + 1)
 
       // Stop the animation
-      cancelAnimationFrame(requestAnimation.current)
+      if (requestAnimation.current) cancelAnimationFrame(requestAnimation.current)
       return
     }
 
@@ -81,6 +83,8 @@ const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }
   }
 
   useEffect(() => {
+    if (!skill.current) return
+
     // Set initial position
     skillX.current = Number(getComputedStyle(skill.current).left.slice(0, -2))
     skillY.current = Number(getComputedStyle(skill.current).top.slice(0, -2))
@@ -91,7 +95,7 @@ const Skill: FC<skillProps> = ({ children, vector, cursor, setFoundSkillsCount }
     animate()
 
     return () => {
-      cancelAnimationFrame(requestAnimation.current)
+      if (requestAnimation.current) cancelAnimationFrame(requestAnimation.current)
     }
   }, [])
 

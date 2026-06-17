@@ -41,7 +41,7 @@ const Project: FC<projectProps> = ({ title, image, body, stack, gitHubLink, webs
     window.addEventListener("scroll", scrollThrottle)
 
     return () => {
-      window.removeEventListener("scroll", scrollHandler)
+      window.removeEventListener("scroll", scrollThrottle)
     }
   }, [])
 

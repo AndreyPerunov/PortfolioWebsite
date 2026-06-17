@@ -8,9 +8,9 @@ type skillsNotFoundPops = {
 }
 
 const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
-  const cursor = useRef<HTMLDivElement>()
-  const skills = useRef<HTMLDivElement>()
-  const requestAnimation = useRef(null)
+  const cursor = useRef<HTMLDivElement>(null)
+  const skills = useRef<HTMLDivElement>(null)
+  const requestAnimation = useRef<number | null>(null)
 
   // Number of found skills
   const [foundSkillsCount, setFoundSkillsCount] = useState<number>(0)
@@ -38,7 +38,7 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
     delayedCursorY.current += (cursorY.current - delayedCursorY.current) / delay
 
     // Apply movement until it is in the same position as CURSOR
-    if (Math.abs(delayedCursorX.current - cursorX.current) > 0.3 || Math.abs(delayedCursorY.current - cursorY.current) > 0.3) {
+    if (cursor.current && (Math.abs(delayedCursorX.current - cursorX.current) > 0.3 || Math.abs(delayedCursorY.current - cursorY.current) > 0.3)) {
       cursor.current.style.top = delayedCursorY.current + "px"
       cursor.current.style.left = delayedCursorX.current + "px"
     }
@@ -48,7 +48,8 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
   }
 
   // Tracking CURSOR position
-  const mouseMoveHandler = useCallback(e => {
+  const mouseMoveHandler = useCallback((e: MouseEvent) => {
+    if (!skills.current) return
     cursorX.current = e.clientX
     cursorY.current = e.clientY - skills.current.getBoundingClientRect().top
   }, [])
@@ -56,26 +57,26 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
   // Hide delayedCURSOR (tourch-light)
   const mouseOutHandler = useCallback(() => {
     cursorVisible.current = false
-    cursor.current.classList.remove(styles.skills__cursorVisible)
+    cursor.current?.classList.remove(styles.skills__cursorVisible)
   }, [])
 
   // Show delayedCURSOR (tourch-light)
   const mouseOverHandler = useCallback(() => {
     cursorVisible.current = true
-    cursor.current.classList.add(styles.skills__cursorVisible)
+    cursor.current?.classList.add(styles.skills__cursorVisible)
   }, [])
 
   // Track when all Skills are found
   useEffect(() => {
     if (foundSkillsCount == skillsArray.length) {
       // Clear events on unmount
-      skills.current.removeEventListener("mousemove", mouseMoveHandler)
-      skills.current.removeEventListener("mouseout", mouseOutHandler)
-      skills.current.removeEventListener("mouseover", mouseOverHandler)
-      cancelAnimationFrame(requestAnimation.current)
+      skills.current?.removeEventListener("mousemove", mouseMoveHandler)
+      skills.current?.removeEventListener("mouseout", mouseOutHandler)
+      skills.current?.removeEventListener("mouseover", mouseOverHandler)
+      if (requestAnimation.current) cancelAnimationFrame(requestAnimation.current)
 
       // Flash
-      cursor.current.classList.add(styles.skills__cursorFlash)
+      cursor.current?.classList.add(styles.skills__cursorFlash)
 
       // Set that evereting is found
       setTimeout(() => {
@@ -93,6 +94,7 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
 
     // Fixing problem that skills ref is mutable
     const skillsInstance = skills.current
+    if (!skillsInstance) return
 
     // Subscribing to events to animate cursor
     skillsInstance.addEventListener("mousemove", mouseMoveHandler)
@@ -107,7 +109,7 @@ const SkillsNotFound: FC<skillsNotFoundPops> = ({ setAllFound }) => {
       skillsInstance.removeEventListener("mousemove", mouseMoveHandler)
       skillsInstance.removeEventListener("mouseout", mouseOutHandler)
       skillsInstance.removeEventListener("mouseover", mouseOverHandler)
-      cancelAnimationFrame(requestAnimation.current)
+      if (requestAnimation.current) cancelAnimationFrame(requestAnimation.current)
     }
   }, [])
 

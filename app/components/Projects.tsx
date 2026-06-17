@@ -10,6 +10,7 @@ import VideoPlayer from "../../public/Video Player.png"
 import ComplexApp from "../../public/Complex App.png"
 import ChatRoom from "../../public/Chat Room.png"
 import TSIScheduleScraper from "../../public/TSI Schedule Scraper.png"
+import SkateboardingTricksAnalysis from "../../public/cv-sk8.png"
 import LearnKana from "../../public/Learn Kana.png"
 // Icons
 import WebPackIcon from "../../public/Web Pack.svg"
@@ -38,6 +39,12 @@ import ReduxToolkitIcon from "../../public/js_redux-icon.svg"
 import TailwindCSSIcon from "../../public/tailwindcss-icon.svg"
 import DockerIcon from "../../public/docker-icon.svg"
 import ZodIcon from "../../public/zod-logo-glow.webp"
+import PythonIcon from "../../public/python-icon.svg"
+import YOLOIcon from "../../public/ultralytics-icon.png"
+import OpenCVIcon from "../../public/OpenCV-icon.png"
+import CVATIcon from "../../public/CVAT-icon.png"
+import FastAPIIcon from "../../public/FASTAPI-icon.png"
+import NumpyIcon from "../../public/numpy-icon.svg"
 
 // Styles
 import styles from "./modules/Projects.module.scss"
@@ -45,32 +52,30 @@ import styles from "./modules/Projects.module.scss"
 import Project from "./Project"
 
 const Projects: FC = () => {
-  let backgroundSphere1
-  let backgroundSphere2
-  let backgroundSphere3
-  let backgroundSphere4
-  if (!isMobile) {
-    backgroundSphere1 = useRef<HTMLDivElement | null>()
-    backgroundSphere2 = useRef<HTMLDivElement | null>()
-    backgroundSphere3 = useRef<HTMLDivElement | null>()
-    backgroundSphere4 = useRef<HTMLDivElement | null>()
-    useEffect(() => {
-      let topInitial1 = backgroundSphere1.current.offsetTop + 200
-      let topInitial2 = backgroundSphere2.current.offsetTop + 200
-      let topInitial3 = backgroundSphere3.current.offsetTop + 200
-      let topInitial4 = backgroundSphere4.current.offsetTop + 200
-      const scrollHandler = e => {
-        backgroundSphere1.current.style.top = `${topInitial1 - window.scrollY * 0.4}px`
-        backgroundSphere2.current.style.top = `${topInitial2 - window.scrollY * 0.4}px`
-        backgroundSphere3.current.style.top = `${topInitial3 - window.scrollY * 0.4}px`
-        backgroundSphere4.current.style.top = `${topInitial4 - window.scrollY * 0.4}px`
-      }
-      window.addEventListener("scroll", scrollHandler)
-      return () => {
-        window.removeEventListener("scroll", scrollHandler)
-      }
-    }, [])
-  }
+  const backgroundSphere1 = useRef<HTMLDivElement | null>(null)
+  const backgroundSphere2 = useRef<HTMLDivElement | null>(null)
+  const backgroundSphere3 = useRef<HTMLDivElement | null>(null)
+  const backgroundSphere4 = useRef<HTMLDivElement | null>(null)
+  useEffect(() => {
+    if (isMobile) return
+    if (!backgroundSphere1.current || !backgroundSphere2.current || !backgroundSphere3.current || !backgroundSphere4.current) return
+
+    const topInitial1 = backgroundSphere1.current.offsetTop + 200
+    const topInitial2 = backgroundSphere2.current.offsetTop + 200
+    const topInitial3 = backgroundSphere3.current.offsetTop + 200
+    const topInitial4 = backgroundSphere4.current.offsetTop + 200
+    const scrollHandler = () => {
+      if (!backgroundSphere1.current || !backgroundSphere2.current || !backgroundSphere3.current || !backgroundSphere4.current) return
+      backgroundSphere1.current.style.top = `${topInitial1 - window.scrollY * 0.4}px`
+      backgroundSphere2.current.style.top = `${topInitial2 - window.scrollY * 0.4}px`
+      backgroundSphere3.current.style.top = `${topInitial3 - window.scrollY * 0.4}px`
+      backgroundSphere4.current.style.top = `${topInitial4 - window.scrollY * 0.4}px`
+    }
+    window.addEventListener("scroll", scrollHandler)
+    return () => {
+      window.removeEventListener("scroll", scrollHandler)
+    }
+  }, [])
   return (
     <div className={styles.projects} id="projects">
       <div ref={backgroundSphere1} className={styles.projects__backgroundSphere}></div>
@@ -79,6 +84,26 @@ const Projects: FC = () => {
       <div ref={backgroundSphere4} className={styles.projects__backgroundSphere}></div>
 
       <h1 className={styles.projects__title}>Recent Projects</h1>
+      <Project
+        title="Computer Vision: Skateboarding Analysis"
+        image={SkateboardingTricksAnalysis}
+        body="A CV system that detects and classifies sk8boarding tricks from video. I trained a custom YOLO pose model to track a sk8board's 6 keypoints, then fused it with human-pose and segmentation models into a pipeline that reconstructs board orientation via PCA, measures jump height and rotation, and classifies tricks. Full ML lifecycle from CVAT dataset prep and model training to a inference package with a FastAPI/web frontend."
+        stack={[
+          { name: "Ultralitics YOLO v11", src: YOLOIcon },
+          { name: "OpenCV", src: OpenCVIcon },
+          { name: "CVAT", src: CVATIcon },
+          { name: "NumPy", src: NumpyIcon },
+          { name: "Python", src: PythonIcon },
+          { name: "FastAPI", src: FastAPIIcon },
+          { name: "React", src: ReactIcon },
+          { name: "Next.js", src: NextjsIcon },
+          { name: "Git", src: GitIcon },
+          { name: "TypeScript", src: TypeScriptIcon },
+          { name: "TailwindCSS", src: TailwindCSSIcon }
+        ]}
+        gitHubLink="https://github.com/AndreyPerunov/CV-System-for-Skateboarding-Trick-Analysis-Using-YOLO-and-Human-Pose-Estimation"
+        websiteLink="https://cv-sk8.andreyperunov.com/"
+      />
       <Project
         title="TSI Schedule Scraper"
         image={TSIScheduleScraper}

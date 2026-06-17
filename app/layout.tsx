@@ -2,7 +2,6 @@
 import "./styles/main.scss"
 
 // Components
-import Alert from "./components/Alert"
 import { Metadata } from "next/types"
 import { ProfilePage, WithContext } from "schema-dts"
 

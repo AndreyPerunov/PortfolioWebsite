@@ -38,7 +38,7 @@ const ContactForm = () => {
   const onSubmit: SubmitHandler<Inputs> = data => {
     startTransition(() => {
       onFormSubmit(data.name, data.email, data.message).then(data => {
-        setResponse({ success: data.success !== undefined, message: data.success || data.error })
+        setResponse({ success: data.success !== undefined, message: data.success || data.error || "" })
       })
     })
   }
