@@ -16,7 +16,7 @@ type projectProps = {
   image: StaticImageData
   body: string
   stack: Tool[]
-  gitHubLink: string
+  gitHubLink?: string
   websiteLink: string
 }
 
@@ -60,9 +60,11 @@ const Project: FC<projectProps> = ({ title, image, body, stack, gitHubLink, webs
         <Button href={websiteLink} style={{ marginRight: "10px", marginTop: "15px" }} openInNewTab={true}>
           Checkout
         </Button>
-        <Button href={gitHubLink} hollow={true} openInNewTab={true}>
-          Github
-        </Button>
+        {gitHubLink && (
+          <Button href={gitHubLink} hollow={true} openInNewTab={true}>
+            Github
+          </Button>
+        )}
       </div>
     </div>
   )

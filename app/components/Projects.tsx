@@ -101,7 +101,6 @@ const Projects: FC = () => {
           { name: "TypeScript", src: TypeScriptIcon },
           { name: "TailwindCSS", src: TailwindCSSIcon }
         ]}
-        gitHubLink="https://github.com/AndreyPerunov/CV-System-for-Skateboarding-Trick-Analysis-Using-YOLO-and-Human-Pose-Estimation"
         websiteLink="https://cv-sk8.andreyperunov.com/"
       />
       <Project
